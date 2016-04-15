@@ -1,0 +1,20 @@
+<div data-role="view" data-title="Carrito" data-layout="main" data-model="app.ordenes" data-show="app.ordenes.onShow" data-after-show="app.ordenes.afterShow">
+
+    <!-- START_CUSTOM_CODE_ordenes -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_ordenes -->
+    <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="ordenesModelTemplate" data-bind="{ source: ordenesModel.dataSource, events: {click: ordenesModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+    <!-- START_CUSTOM_CODE_ordenesModel -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_ordenesModel -->
+    <script type="text/x-kendo-template" id="ordenesModelTemplate">
+        <div class="image-with-text">
+            <img src="#: data['ProductoUrl'] #" width="30%" height="30%">
+            <h3>#: data['Producto'] #</h3>
+            <p>#: data['Precio'] #</p>
+        </div>
+    </script>
+</div>

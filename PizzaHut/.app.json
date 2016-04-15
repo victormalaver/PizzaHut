@@ -4,18 +4,234 @@
     {
       "type": "kendo-ui-mobile:view",
       "name": "home",
-      "components": [],
-      "title": "Home View",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:authentication",
+          "name": "homeModel",
+          "dataProvider": "pizzaHut",
+          "emailLabel": "Correo",
+          "emailPlaceholder": "Ingrese su correo",
+          "passwordLabel": "Contraseña",
+          "passwordPlaceholder": "Ingrese su contraseña",
+          "signinLabel": "Iniciar Sesión",
+          "signinRedirect": "categorias",
+          "enableRegistration": true,
+          "gotoRegisterLabel": "Crear una cuenta",
+          "registerEmailLabel": "Correo",
+          "registerPasswordLabel": "Contraseña",
+          "registerNameLabel": "Apellidos",
+          "registerLabel": "Registrar",
+          "registerRedirect": "categorias",
+          "gotoSigninLabel": "Iniciar Sesión",
+          "enableLogout": true,
+          "logoutLabel": "Cerrar Sesión",
+          "enableRememberme": true,
+          "remembermeLabel": "Recordar"
+        }
+      ],
+      "title": "Inicio",
       "addToNavigation": true,
       "icon": "home"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "categorias",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [],
+          "name": "categoriasModel",
+          "dataProvider": "pizzaHut",
+          "collection": "Categoria",
+          "headerField": "Nombre",
+          "iconField": true,
+          "imageField": "Picture",
+          "subHeaderField": "Detalle",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "addItemForm": false,
+          "editItemForm": false
+        }
+      ],
+      "title": "Categorias",
+      "addToNavigation": true,
+      "icon": "organize"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "productos",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "precio",
+                  "title": "Precio",
+                  "inputType": "shortText",
+                  "dataBindingOptional": "Precio"
+                }
+              ],
+              "name": "editableListForm16",
+              "formType": "list"
+            }
+          ],
+          "name": "productosModel",
+          "dataProvider": "pizzaHut",
+          "collection": "Producto",
+          "headerField": "Categoria",
+          "iconField": true,
+          "imageField": "Picture",
+          "subHeaderField": "Descripcion",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "addItemForm": false,
+          "editItemForm": false
+        }
+      ],
+      "title": "Productos",
+      "addToNavigation": true,
+      "icon": "favorites"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "ordenes",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [],
+          "name": "ordenesModel",
+          "dataProvider": "pizzaHut",
+          "collection": "Orden",
+          "headerField": "Producto",
+          "iconField": false,
+          "imageField": "Producto",
+          "subHeaderField": "Precio",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "addItemForm": false,
+          "editItemForm": false
+        }
+      ],
+      "title": "Carrito",
+      "addToNavigation": true,
+      "icon": "cart"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "combos",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "descripcion",
+                  "title": "Descripcion",
+                  "inputType": "shortText",
+                  "dataBindingOptional": "Descripcion"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "detalle",
+                  "title": "Long text",
+                  "inputType": "longText",
+                  "dataBindingOptional": "Detalle"
+                }
+              ],
+              "name": "editableListForm31",
+              "formType": "list"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "detalle",
+                  "title": "Detalle",
+                  "inputType": "shortText",
+                  "dataBindingOptional": "Detalle"
+                }
+              ],
+              "name": "editableListForm32",
+              "formType": "detail"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [],
+              "name": "editableListForm34",
+              "formType": "edit"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [],
+              "name": "editableListForm33",
+              "formType": "add"
+            }
+          ],
+          "name": "combosModel",
+          "dataProvider": "pizzaHut",
+          "collection": "Combo",
+          "headerField": "Codigo",
+          "iconField": true,
+          "imageField": "Picture",
+          "subHeaderField": "Nombre",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "static",
+          "detailHeaderFieldValue": "Detail",
+          "detailSubHeaderField": "Nombre",
+          "detailDescriptionField": "Descripcion",
+          "detailImageField": "Picture",
+          "addItemForm": true,
+          "addScreenHeaderValue": "Create",
+          "editItemForm": true,
+          "editScreenHeaderSource": "dataBound",
+          "editScreenHeaderField": "Codigo"
+        }
+      ],
+      "title": "Combos",
+      "addToNavigation": true,
+      "icon": "favorites"
     }
   ],
-  "dataProviders": [],
+  "dataProviders": [
+    {
+      "type": "kendo-ui-mobile:dataProvider",
+      "name": "pizzaHut",
+      "title": "PizzaHut / PizzaHut",
+      "source": "everlive",
+      "everliveKey": "7stqcr4vsmhtiu0e",
+      "offlineStorage": true
+    }
+  ],
   "name": "kendoUiMobileApp",
-  "navigation": "tabstrip",
+  "navigation": "drawer",
   "view": "home",
-  "transition": "slide",
-  "showMoreTab": false,
   "skin": "nova",
   "skinMainColor": "#32364c",
   "skinTextColor": "#ffffff",

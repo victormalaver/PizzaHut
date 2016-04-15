@@ -113,7 +113,11 @@ app.categorias = kendo.observable({
             dataSource: dataSource,
             itemClick: function(e) {
 
-                app.mobileApp.navigate('#components/categorias/details.html?uid=' + e.dataItem.uid);
+                app.mobileApp.navigate('components/productos/view.html?filter=' + encodeURIComponent(JSON.stringify({
+                    field: 'Categoria',
+                    value: e.dataItem.Id,
+                    operator: 'eq'
+                })));
 
             },
             detailsShow: function(e) {

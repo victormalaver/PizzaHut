@@ -9,7 +9,7 @@
         $(function() {
             app.mobileApp = new kendo.mobile.Application(document.body, {
                 skin: 'nova',
-                initial: 'components/home/view.html'
+                initial: 'components/index/view.html'
             });
         });
     };

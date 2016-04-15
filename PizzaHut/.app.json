@@ -29,7 +29,7 @@
           "remembermeLabel": "Recordar"
         }
       ],
-      "title": "Inicio",
+      "title": "Iniciar Sesión",
       "addToNavigation": true,
       "icon": "home"
     },
@@ -55,7 +55,10 @@
           "detailHeaderFieldSource": "static",
           "detailHeaderFieldValue": "Detail",
           "addItemForm": false,
-          "editItemForm": false
+          "editItemForm": false,
+          "itemActionView": "productos",
+          "itemActionPrimaryKey": "Id",
+          "itemActionSecondaryKey": "Categoria"
         }
       ],
       "title": "Categorias",
@@ -217,6 +220,61 @@
       "title": "Combos",
       "addToNavigation": true,
       "icon": "favorites"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "perfil",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "apellido",
+              "title": "Apellidos",
+              "inputType": "text",
+              "titlePosition": "top",
+              "placeholder": "Ingrese sus apellidos"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "nombre",
+              "title": "Nombres",
+              "inputType": "text",
+              "titlePosition": "top",
+              "placeholder": "Ingrese sus nombres"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "direccion",
+              "title": "Dirección",
+              "inputType": "text",
+              "titlePosition": "top",
+              "placeholder": "Ingrese su dirección"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "toggleDireccion",
+              "title": "Dirección activa",
+              "inputType": "switch"
+            }
+          ],
+          "name": "perfilModel",
+          "submitButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      ],
+      "title": "Mi Perfil",
+      "addToNavigation": true,
+      "icon": "contacts"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "index",
+      "components": [],
+      "title": "Index",
+      "addToNavigation": true,
+      "icon": "add"
     }
   ],
   "dataProviders": [
@@ -231,7 +289,7 @@
   ],
   "name": "kendoUiMobileApp",
   "navigation": "drawer",
-  "view": "home",
+  "view": "index",
   "skin": "nova",
   "skinMainColor": "#32364c",
   "skinTextColor": "#ffffff",

@@ -87,8 +87,8 @@ app.productos = kendo.observable({
             schema: {
                 model: {
                     fields: {
-                        'Categoria': {
-                            field: 'Categoria',
+                        'Nombre': {
+                            field: 'Nombre',
                             defaultValue: ''
                         },
                         'Descripcion': {
@@ -121,8 +121,8 @@ app.productos = kendo.observable({
                     dataSource = productosModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
 
-                if (!itemModel.Categoria) {
-                    itemModel.Categoria = String.fromCharCode(160);
+                if (!itemModel.Nombre) {
+                    itemModel.Nombre = String.fromCharCode(160);
                 }
 
                 productosModel.set('currentItem', null);

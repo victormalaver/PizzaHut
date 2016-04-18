@@ -92,7 +92,7 @@
           "name": "productosModel",
           "dataProvider": "pizzaHut",
           "collection": "Producto",
-          "headerField": "Categoria",
+          "headerField": "Nombre",
           "iconField": true,
           "imageField": "Picture",
           "subHeaderField": "Descripcion",
@@ -117,7 +117,94 @@
           "type": "kendo-ui-mobile:editableList",
           "listExtraFields": [],
           "detailExtraFields": [],
-          "components": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "direccion",
+                  "title": "Dirección",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "placeholder": "Ingrese su dirección",
+                  "dataBinding": "Direccion"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "user",
+                  "title": "User",
+                  "inputType": "text",
+                  "titlePosition": "hidden",
+                  "placeholder": "UserId",
+                  "dataBinding": "User"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "sucursal",
+                  "title": "Sucursal",
+                  "inputType": "text",
+                  "titlePosition": "hidden",
+                  "placeholder": "SucursalId",
+                  "dataBinding": "Sucursal"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "producto",
+                  "title": "Producto",
+                  "inputType": "text",
+                  "titlePosition": "hidden",
+                  "placeholder": "ProductoId",
+                  "dataBinding": "Producto"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "estado",
+                  "title": "Estado",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "placeholder": "Estado",
+                  "dataBinding": "Estado"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "codigo",
+                  "title": "Codigo",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "placeholder": "Codigo",
+                  "dataBinding": "Codigo"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "localizacion",
+                  "title": "Localización",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "placeholder": "Localización",
+                  "dataBinding": "Localizacion"
+                }
+              ],
+              "name": "editableListForm49",
+              "formType": "add"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "precio",
+                  "title": "Precio S/.",
+                  "inputType": "text",
+                  "titlePosition": "left",
+                  "placeholder": "Precio Total S/",
+                  "dataBinding": "Precio"
+                }
+              ],
+              "name": "editableListForm50",
+              "formType": "edit"
+            }
+          ],
           "name": "ordenesModel",
           "dataProvider": "pizzaHut",
           "collection": "Orden",
@@ -125,13 +212,24 @@
           "iconField": false,
           "imageField": "Producto",
           "subHeaderField": "Precio",
-          "pullToRefresh": false,
-          "endlessScroll": false,
-          "deleteItemButton": false,
-          "detailHeaderFieldSource": "static",
-          "detailHeaderFieldValue": "Detail",
-          "addItemForm": false,
-          "editItemForm": false
+          "filterField": "Codigo",
+          "group": "Codigo",
+          "pullToRefresh": true,
+          "endlessScroll": true,
+          "deleteItemButton": true,
+          "deleteItemConfirmation": true,
+          "detailHeaderFieldSource": "dataBound",
+          "detailHeaderField": "Producto",
+          "detailSubHeaderField": "Codigo",
+          "detailDescriptionField": "Direccion",
+          "addItemForm": true,
+          "addScreenHeaderValue": "Crear Orden",
+          "editItemForm": true,
+          "editScreenHeaderSource": "dataBound",
+          "editScreenHeaderField": "Codigo",
+          "itemActionView": "ordenes",
+          "itemActionPrimaryKey": "Id",
+          "itemActionSecondaryKey": "Producto"
         }
       ],
       "title": "Carrito",

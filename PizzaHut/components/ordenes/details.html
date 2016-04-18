@@ -2,11 +2,14 @@
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
-            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">Detail</span>
+            <span data-bind="text: currentItem.Producto" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+            <a data-role="button" data-align="right" data-bind="events: { click: editClick }">Edit</a>
+            <a data-role="button" data-align="right" data-bind="events: { click: deleteClick }"><i class="km-icon km-delete"></i></a>
         </div>
     </header>
     <div class="details-content">
-
+        <h3 data-bind="text: currentItem.Codigo"></h3>
+        <p data-bind="text: currentItem.Direccion"></p>
 
     </div>
     <!-- START_CUSTOM_CODE_ordenesModel -->

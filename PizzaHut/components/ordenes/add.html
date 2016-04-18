@@ -1,0 +1,89 @@
+<div data-role="view" data-title="Add" data-model="app.ordenes.addItemViewModel" data-bind="events: { show: onShow }" id="ordenesModelAddItemView">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Save</a>
+        </div>
+    </header>
+    <!-- START_CUSTOM_CODE_ordenesModel -->
+    <!-- END_CUSTOM_CODE_ordenesModel -->
+    <div id="editableListForm49" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li class="form-content-item">
+
+                    <label class="km-label-above">
+
+                        <span>Dirección</span>
+
+                        <input id="direccion" data-bind="value: addFormData.direccion" placeholder="Ingrese su dirección" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label class="km-label-above km-label-hidden">
+
+                        &nbsp;
+
+                        <input id="user" data-bind="value: addFormData.user" placeholder="UserId" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label class="km-label-above km-label-hidden">
+
+                        &nbsp;
+
+                        <input id="sucursal" data-bind="value: addFormData.sucursal" placeholder="SucursalId" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label class="km-label-above km-label-hidden">
+
+                        &nbsp;
+
+                        <input id="producto" data-bind="value: addFormData.producto" placeholder="ProductoId" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label>
+
+                        <span>Estado</span>
+
+                        <input id="estado" data-bind="value: addFormData.estado" placeholder="Estado" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label>
+
+                        <span>Codigo</span>
+
+                        <input id="codigo" data-bind="value: addFormData.codigo" placeholder="Codigo" type="text">
+                    </label>
+
+                </li>
+                <li class="form-content-item">
+
+                    <label>
+
+                        <span>Localización</span>
+
+                        <input id="localizacion" data-bind="value: addFormData.localizacion" placeholder="Localización" type="text">
+                    </label>
+
+                </li>
+            </ul>
+        </form>
+        <!-- START_CUSTOM_CODE_editableListForm49 -->
+        <!-- END_CUSTOM_CODE_editableListForm49 -->
+    </div>
+</div>

@@ -2,7 +2,23 @@
     <div class="signin-view">
         <form>
             <ul data-role="listview" data-style="inset">
-                <li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Correo</span>
+
+                        <input type="email" data-bind="value: homeModel.email" required autofocus>
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Contraseña</span>
+
+                        <input type="password" data-bind="value: homeModel.password" required>
+                    </label>
+                </li>
+                <!--                 <li>
                     <label>Correo
                         <input type="email" placeholder="Ingrese su correo" data-bind="value: homeModel.email" required autofocus>
                     </label>
@@ -11,19 +27,16 @@
                     <label>Contraseña
                         <input type="password" placeholder="Ingrese su contraseña" data-bind="value: homeModel.password" required>
                     </label>
-                </li>
+                </li> 
                 <li>
                     <label>Recordar
                         <input type="checkbox" data-bind="checked: homeModel.rememberme">
                     </label>
-                </li>
+                </li> -->
             </ul>
-
             <div class="button-group button-group-vertical">
                 <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">Iniciar Sesión</a>
-
                 <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Crear una cuenta</a>
-
             </div>
         </form>
     </div>
@@ -57,11 +70,23 @@
     </div>
     <!-- START_CUSTOM_CODE_homeModel -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
     <!-- END_CUSTOM_CODE_homeModel -->
-
     <!-- START_CUSTOM_CODE_home -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
     <!-- END_CUSTOM_CODE_home -->
+</div>
+<div id="modalInfoRegistro" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
+    </br>
+    </br>
+    <h3 style="text-align:center;"><b>Con tu cuenta puedes: </b></h3>
+    </br>
+    <h3>* Guardar tus pedidos favoritos</h3>
+    <h3>* Acelerar la compra al usar tus direcciones guardadas.</h3>
+    <h3>* Recibir ofertas especiales</h3>
+    </br>
+    <div data-role="footer">
+        <div data-role="navbar" onclick="$('#modalInfoRegistro').data('kendoMobileModalView').close();">
+            OK
+        </div>
+    </div>
 </div>

@@ -1,20 +1,32 @@
-<div data-role="view" data-title="Categorias" data-layout="main" data-model="app.categorias" data-show="app.categorias.onShow" data-after-show="app.categorias.afterShow">
-
-    <!-- START_CUSTOM_CODE_categorias -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
-    <!-- END_CUSTOM_CODE_categorias -->
-    <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="categoriasModelTemplate" data-bind="{ source: categoriasModel.dataSource, events: {click: categoriasModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
+<div id="viewCategoria" data-role="view" data-title="Categorias" data-layout="main" data-model="app.categorias" data-show="app.categorias.onShow" data-after-show="app.categorias.afterShow">
+    <ul id="listViewCategorias" data-role="listview" data-auto-bind="false" data-style="inset" data-template="categoriasModelTemplate" data-bind="{ source: categoriasModel.dataSource, events: {click: categoriasModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false" style="margin-top: 25%;">
     </ul>
-    <!-- START_CUSTOM_CODE_categoriasModel -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
-    <!-- END_CUSTOM_CODE_categoriasModel -->
     <script type="text/x-kendo-template" id="categoriasModelTemplate">
         <div class="image-with-text">
-            <img src="#: data['PictureUrl'] #" width="30%" height="30%">
-            <h3><span class="#: data.icon() #"></span>#: data['Nombre'] #</h3>
-            <p>#: data['Detalle'] #</p>
+            <img src="#: data['PictureUrl'] #" width="100%" height="100%" style="border-radius:25%;">
+            </br>
+            <h3>#: data['Nombre'] #</h3>
         </div>
     </script>
+    <style>
+        #listViewCategorias>li {
+            width: 50%;
+            float: left;
+            text-align: center;
+        }
+    </style>
+</div>
+
+<div id="modalDemoCategorias" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
+    </br>
+    </br>
+    <h3 style="text-align:center;"><b>Esta categoría no está disponible</b></h3>
+    </br>
+    <h3>Este demo presenta sólo dos categorías, pizzas y ofertas, con dos productos en cada una de ellas.</h3>
+    </br>
+    <div data-role="footer">
+        <div data-role="navbar" onclick="$('#modalDemoCategorias').data('kendoMobileModalView').close();">
+            OK
+        </div>
+    </div>
 </div>

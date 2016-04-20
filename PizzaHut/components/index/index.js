@@ -1,8 +1,21 @@
 'use strict';
 
 app.index = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () {
+        // $("#modalInfoOrden").kendoMobileModalView("open");
+        // var mv = $("#modalInfoOrden").data("kendoMobileModalView");
+
+        // mv.shim.popup.options.animation.open.duration = 400;
+        // mv.shim.popup.options.animation.open.effects = "slideIn:up";
+        // mv.shim.popup.options.animation.close.duration = 400;
+
+        // mv.open();
+        var mv = $("#modalInfoOrden").data("kendoMobileModalView");
+        mv.shim.popup.options.animation.open.effects = "zoom";
+
+        mv.open();
+    },
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_index

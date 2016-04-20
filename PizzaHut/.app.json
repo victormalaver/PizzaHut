@@ -355,6 +355,34 @@
               "name": "toggleDireccion",
               "title": "Dirección activa",
               "inputType": "switch"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "nombres",
+              "title": "Nombre Completo",
+              "inputType": "text",
+              "titlePosition": "top"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "correo",
+              "title": "Correo (Para acceso a Cuenta)",
+              "inputType": "text",
+              "titlePosition": "top"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "telefono",
+              "title": "Teléfono",
+              "inputType": "text",
+              "titlePosition": "top"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "dni",
+              "title": "Nro. DNI",
+              "inputType": "text",
+              "titlePosition": "top"
             }
           ],
           "name": "perfilModel",

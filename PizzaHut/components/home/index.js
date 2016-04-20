@@ -1,21 +1,25 @@
 'use strict';
 
 app.home = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () {
+        var mv = $("#modalInfoRegistro").data("kendoMobileModalView");
+        mv.shim.popup.options.animation.open.effects = "zoom";
+        mv.open();
+    },
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_home
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_home
-(function(parent) {
+(function (parent) {
     var provider = app.data.pizzaHut,
         mode = 'signin',
         registerRedirect = 'categorias',
         signinRedirect = 'categorias',
         rememberKey = 'pizzaHut_authData_homeModel',
-        init = function(error) {
+        init = function (error) {
             if (error) {
                 if (error.message) {
                     alert(error.message);
@@ -39,7 +43,7 @@ app.home = kendo.observable({
                 parent.homeModel.signin();
             }
         },
-        successHandler = function(data) {
+        successHandler = function (data) {
             var redirect = mode === 'signin' ? signinRedirect : registerRedirect,
                 model = parent.homeModel || {},
                 logout = model.logout;
@@ -65,7 +69,7 @@ app.home = kendo.observable({
                 }
                 app.user = data.result;
 
-                setTimeout(function() {
+                setTimeout(function () {
                     app.mobileApp.navigate('components/' + redirect + '/view.html');
                 }, 0);
             } else {
@@ -76,7 +80,7 @@ app.home = kendo.observable({
             displayName: '',
             email: '',
             password: '',
-            validateData: function(data) {
+            validateData: function (data) {
                 if (!data.email) {
                     alert('Missing email');
                     return false;
@@ -89,7 +93,7 @@ app.home = kendo.observable({
 
                 return true;
             },
-            signin: function() {
+            signin: function () {
                 var model = homeModel,
                     email = model.email.toLowerCase(),
                     password = model.password;
@@ -99,7 +103,7 @@ app.home = kendo.observable({
                 }
                 provider.Users.login(email, password, successHandler, init);
             },
-            register: function() {
+            register: function () {
                 var model = homeModel,
                     email = model.email.toLowerCase(),
                     password = model.password,
@@ -115,14 +119,14 @@ app.home = kendo.observable({
 
                 provider.Users.register(email, password, attrs, successHandler, init);
             },
-            toggleView: function() {
+            toggleView: function () {
                 mode = mode === 'signin' ? 'register' : 'signin';
                 init();
             }
         });
 
     parent.set('homeModel', homeModel);
-    parent.set('afterShow', function(e) {
+    parent.set('afterShow', function (e) {
         if (e && e.view && e.view.params && e.view.params.logout) {
             if (localStorage) {
                 localStorage.setItem(rememberKey, null);

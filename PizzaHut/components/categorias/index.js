@@ -1,17 +1,17 @@
 'use strict';
 
 app.categorias = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () {},
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_categorias
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_categorias
-(function(parent) {
+(function (parent) {
     var dataProvider = app.data.pizzaHut,
-        fetchFilteredData = function(paramFilter, searchFilter) {
+        fetchFilteredData = function (paramFilter, searchFilter) {
             var model = parent.get('categoriasModel'),
                 dataSource = model.get('dataSource');
 
@@ -32,7 +32,7 @@ app.categorias = kendo.observable({
                 dataSource.filter({});
             }
         },
-        processImage = function(img) {
+        processImage = function (img) {
             if (!img) {
                 var empty1x1png = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQI12NgYAAAAAMAASDVlMcAAAAASUVORK5CYII=';
                 img = 'data:image/png;base64,' + empty1x1png;
@@ -44,9 +44,9 @@ app.categorias = kendo.observable({
 
             return img;
         },
-        flattenLocationProperties = function(dataItem) {
+        flattenLocationProperties = function (dataItem) {
             var propName, propValue,
-                isLocation = function(value) {
+                isLocation = function (value) {
                     return propValue && typeof propValue === 'object' &&
                         propValue.longitude && propValue.latitude;
                 };
@@ -68,7 +68,7 @@ app.categorias = kendo.observable({
                 typeName: 'Categoria',
                 dataProvider: dataProvider
             },
-            change: function(e) {
+            change: function (e) {
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
@@ -79,7 +79,7 @@ app.categorias = kendo.observable({
                     flattenLocationProperties(dataItem);
                 }
             },
-            error: function(e) {
+            error: function (e) {
                 if (e.xhr) {
                     alert(JSON.stringify(e.xhr));
                 }
@@ -100,7 +100,7 @@ app.categorias = kendo.observable({
                             defaultValue: ''
                         },
                     },
-                    icon: function() {
+                    icon: function () {
                         var i = 'globe';
                         return kendo.format('km-icon km-{0}', i);
                     }
@@ -111,16 +111,30 @@ app.categorias = kendo.observable({
         dataSource = new kendo.data.DataSource(dataSourceOptions),
         categoriasModel = kendo.observable({
             dataSource: dataSource,
-            itemClick: function(e) {
-
-                app.mobileApp.navigate('components/productos/view.html?filter=' + encodeURIComponent(JSON.stringify({
-                    field: 'Categoria',
-                    value: e.dataItem.Id,
-                    operator: 'eq'
-                })));
-
+            itemClick: function (e) {
+                switch (e.dataItem.Nombre) {
+                    case 'Pizzas':
+                        app.mobileApp.navigate('components/productos/view.html?filter=' + encodeURIComponent(JSON.stringify({
+                            field: 'Categoria',
+                            value: e.dataItem.Id,
+                            operator: 'eq'
+                        })));
+                        break;
+                    case 'Ofertas':
+                        app.mobileApp.navigate('components/productos/oferta.html?filter=' + encodeURIComponent(JSON.stringify({
+                            field: 'Categoria',
+                            value: e.dataItem.Id,
+                            operator: 'eq'
+                        })));
+                        break;
+                    default:
+                        var mv = $("#modalDemoCategorias").data("kendoMobileModalView");
+                        mv.shim.popup.options.animation.open.effects = "zoom";
+                        mv.open();
+                        break;
+                }
             },
-            detailsShow: function(e) {
+            detailsShow: function (e) {
                 var item = e.view.params.uid,
                     dataSource = categoriasModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
@@ -143,9 +157,9 @@ app.categorias = kendo.observable({
         parent.set('categoriasModel', categoriasModel);
     }
 
-    parent.set('onShow', function(e) {
+    parent.set('onShow', function (e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
-
+		
         fetchFilteredData(param);
     });
 })(app.categorias);

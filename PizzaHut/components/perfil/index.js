@@ -12,6 +12,10 @@ app.perfil = kendo.observable({
 (function(parent) {
     var perfilModel = kendo.observable({
         fields: {
+            dni: '',
+            telefono: '',
+            correo: '',
+            nombres: '',
             toggleDireccion: '',
             direccion: '',
             nombre: '',

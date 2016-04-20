@@ -1,19 +1,74 @@
-<div data-role="view" data-title="Productos" data-layout="main" data-model="app.productos" data-show="app.productos.onShow" data-after-show="app.productos.afterShow">
-
+<div id="viewProducto" data-role="view" data-stretch="true" data-title="Productos" data-layout="main" data-model="app.productos" data-show="app.productos.onShow" data-after-show="app.productos.afterShow">
     <!-- START_CUSTOM_CODE_productos -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_productos -->
-    <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
-    </ul>
+    <!--     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul> -->
+    <!--     <div data-auto-bind="false"  data-role="scrollview" data-page="3" data-content-height="100%" data-pager-overlay="true" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }"></div> -->
+    <div id="scrollViewProducto" data-role="scrollview" data-auto-bind="false" data-content-height="100%" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pager-overlay="true" style="text-align:center;margin-top:50%;">
+    </div>
+    <a id="prev-img" title="Previous Image"></a>
+    <a id="next-img" title="Next Image"></a>
     <!-- START_CUSTOM_CODE_productosModel -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_productosModel -->
-    <script type="text/x-kendo-template" id="productosModelTemplate">
+    <!--     <script type="text/x-kendo-template" id="productosModelTemplate">
         <div class="image-with-text">
             <img src="#: data['PictureUrl'] #" width="30%" height="30%">
             <h3><span class="#: data.icon() #"></span>#: data['Nombre'] #</h3>
             <p>#: data['Descripcion'] #</p>
         </div>
         <p class="editableListItem"><span>Precio</span><span>#: data['Precio'] #</span></p>
+    </script> -->
+    <script type="text/x-kendo-template" id="productosModelTemplate">
+        <div class="photo" data-role="page" style="width: 300px; height: 300px; background-image: url('#: data['PictureUrl'] #');"></div>
+        <h2>#: data['Nombre'] #</h2>
     </script>
+    <script>
+        $("#prev-img").click(function (e) {
+            var scrollView = $("#scrollViewProducto").data("kendoMobileScrollView");
+            scrollView.prev();
+        });
+        $("#next-img").click(function (e) {
+            var scrollView = $("#scrollViewProducto").data("kendoMobileScrollView");
+            scrollView.next();
+        });
+    </script>
+    <style>
+        #viewProducto .photo {
+            display: inline-block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        #viewProducto h2 {
+            color:#fcd86e;
+        }
+        #prev-img,
+        #next-img {
+            display: block;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40%;
+        }
+        #prev-img {
+            left: 0px;
+            background: url('components/productos/arrow-left.png') no-repeat 50% 50%;
+        }
+        #next-img {
+            left: auto;
+            right: 0px;
+            background: url('components/productos/arrow-right.png') no-repeat 50% 50%;
+        }
+        a#prev-img:hover {
+            background: url('components/productos/arrow-left.png') no-repeat 50% 50% rgba(0, 0, 0, .3);
+            opacity: 1;
+        }
+        a#next-img:hover {
+            background: url('components/productos/arrow-right.png') no-repeat 50% 50% rgba(0, 0, 0, .3);
+            opacity: 1;
+        }
+    </style>
 </div>

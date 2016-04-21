@@ -15,7 +15,13 @@ app.index = kendo.observable({
 
         mv.open();
     },
-    afterShow: function () {}
+    afterShow: function () {},
+    goToHome: function () {
+        app.mobileApp.navigate('components/home/view.html');
+    },
+    goToPerfil: function () {
+        app.mobileApp.navigate('components/perfil/view.html');
+    },
 });
 
 // START_CUSTOM_CODE_index

@@ -1,4 +1,10 @@
-<div data-role="view" data-title="Iniciar Sesión" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow">
+<div id="homeView" data-role="view" data-title="Iniciar Sesión" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">Iniciar Sesión</span>
+        </div>
+    </header>
     <div class="signin-view">
         <form>
             <ul data-role="listview" data-style="inset">
@@ -36,7 +42,7 @@
             </ul>
             <div class="button-group button-group-vertical">
                 <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">Iniciar Sesión</a>
-                <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Crear una cuenta</a>
+                <a data-role="button" class="primary" data-bind="events: { click: homeModel.toggleView }">Crear una cuenta</a>
             </div>
         </form>
     </div>

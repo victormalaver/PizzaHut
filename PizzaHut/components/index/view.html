@@ -1,46 +1,16 @@
-<div id="viewIndex" data-role="view" data-title="Index" data-layout="main" data-model="app.index" data-show="app.index.onShow" data-after-show="app.index.afterShow">
-    <!-- START_CUSTOM_CODE_index -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <!-- END_CUSTOM_CODE_index -->
-    <div data-role="scrollview">
-        <div data-role="page">Page 1</div>
-        <div data-role="page">Page 2</div>
+<div id="viewIndex" data-role="view" data-title="" data-layout="main" data-model="app.index" data-show="app.index.onShow" data-after-show="app.index.afterShow">
+    <div style="text-align:center;">
+        <img src="components/index/pizza1.png" width="80%" style="margin-top:50%;"></img>
     </div>
-    <p class="km-style-info km-bold-font">Font sizes and font weights are optimized for mobile devices. For accurate preview, please open this demo on mobile device.</p>
-    <h1>Default Heading 1</h1>
-    <h2>Default Heading 2</h2>
-    <h3>Default Heading 3</h3>
-    <h4>Default Heading 4</h4>
-    <h5>Default Heading 5</h5>
-    <h6>Default Heading 6</h6>
-    <h1>The quick brown fox jumps over the lazy dog</h1>
-    <h2>The quick brown fox jumps over the lazy dog</h2>
-    <h3>The quick brown fox jumps over the lazy dog</h3>
-    <h4>The quick brown fox jumps over the lazy dog</h4>
-    <h5>The quick brown fox jumps over the lazy dog</h5>
-    <h6>The quick brown fox jumps over the lazy dog</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus tortor at lacinia placerat. Sed vel tristique libero. Etiam sodales faucibus odio, malesuada pretium tellus. In nec nisi lorem. Proin semper arcu libero, vehicula eleifend elit posuere volutpat. Nulla sodales est non eros fringilla, non facilisis leo pharetra. Quisque in felis gravida, venenatis ante nec, semper erat. Proin turpis ipsum, lacinia eu rutrum at, tempus vel sem.</p>
-    <p><a href="#">Simple Link</a></p>
-    <h1 class="km-bold-font">Bold Heading 1</h1>
-    <h2 class="km-bold-font">Bold Heading 2</h2>
-    <h3 class="km-bold-font">Bold Heading 3</h3>
-    <h4 class="km-bold-font">Bold Heading 4</h4>
-    <h5 class="km-bold-font">Bold Heading 5</h5>
-    <h6 class="km-bold-font">Bold Heading 6</h6>
-    <h1 class="km-medium-font">Medium Heading 1</h1>
-    <h2 class="km-medium-font">Medium Heading 2</h2>
-    <h3 class="km-medium-font">Medium Heading 3</h3>
-    <h4 class="km-medium-font">Medium Heading 4</h4>
-    <h5 class="km-medium-font">Medium Heading 5</h5>
-    <h6 class="km-medium-font">Medium Heading 6</h6>
-    <h1 class="km-light-font">Heading 1</h1>
-    <h2 class="km-light-font">Heading 2</h2>
-    <h3 class="km-light-font">Heading 3</h3>
-    <h4 class="km-light-font">Heading 4</h4>
-    <h5 class="km-light-font">Heading 5</h5>
-    <h6 class="km-light-font">Heading 6</h6>
+    </br>
+    </br>
+    </br>
+    <div class="button-group button-group-vertical">
+        <a data-role="button" class="primary" data-bind="events: { click: goToHome }">Iniciar Sesión</a>
+        <a data-role="button" class="primary" data-bind="events: { click: goToPerfil }">Registrase</a>
+    </div>
 </div>
-<div id="modalInfoOrden" data-role="modalview"  style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
+<div id="modalInfoOrden" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
     </br>
     </br>
     <h3>Su pedido se enviará a la siguiente dirección: </h3>
@@ -52,5 +22,5 @@
             <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoOrden').data('kendoMobileModalView').close();">No</a>
             <a type="button" data-role="button" data-align="right">Sí</a>
         </div>
-    </div> 
+    </div>
 </div>

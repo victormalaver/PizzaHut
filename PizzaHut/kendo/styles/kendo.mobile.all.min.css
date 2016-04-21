@@ -123,7 +123,8 @@
     vertical-align: top
 }
 #viewCategoria,
-#viewIndex {
+#viewIndex,
+#homeView{
     background-color: transparent;
     background-image: url('images/fondo1.png');
     background-size: auto 100%;
@@ -14097,8 +14098,8 @@ html .km-material .k-overflow-container.km-actionsheet>li {
     padding-left: .89em;
     background: transparent;
     border-radius: 0;
-    border-width: 0 0 0;
-    /* 1px 0 0;*/
+    /*     border-width: 1px 0 0; */
+    border-width: 0px 0 0;
     border-style: solid;
     line-height: 1.5em;
     padding: 1.09em .84em 1.23em .84em
@@ -14214,8 +14215,10 @@ html .km-material .k-overflow-container.km-actionsheet>li {
     right: 0
 }
 .km-nova .km-pages li {
-    width: 1rem; /*.55em*/
-    height: 1rem;/*.55em*/
+    width: 1rem;
+    /*.55em*/
+    height: 1rem;
+    /*.55em*/
     border-radius: 50%;
     border-width: 1px;
     border-style: solid

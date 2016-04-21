@@ -5,10 +5,8 @@
     <title></title>
     <meta charset="utf-8">
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet">
-
     <link href="styles/overrides.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
-
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
@@ -33,33 +31,26 @@
             </div>
         </header>
     </div>
-
-    <div id="appDrawer" data-role="drawer" data-title="Navigation">
+    <div id="appDrawer" data-role="drawer" data-title="">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>
         <ul id="navigation-container" data-role="listview">
-            <li><a href="components/home/view.html" data-icon="home">Iniciar Sesi&#xF3;n</a></li>
-
-            <li><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
-
-            <li><a href="components/productos/view.html" data-icon="favorites">Productos</a></li>
-
-            <li><a href="components/ordenes/view.html" data-icon="cart">Carrito</a></li>
-
-            <li><a href="components/combos/view.html" data-icon="favorites">Combos</a></li>
-
-            <li><a href="components/perfil/view.html" data-icon="contacts">Mi Perfil</a></li>
-
-            <li><a href="components/index/view.html" data-icon="add">Index</a></li>
-            <li id="homeModellogout"><a href="components/home/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/home/view.html" data-icon="contacts">Iniciar Sesi&#xF3;n</a></li>
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
+<!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/productos/view.html" data-icon="favorites">Productos</a></li> -->
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/ordenes/view.html" data-icon="cart">Carrito</a></li>
+<!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/combos/view.html" data-icon="favorites">Combos</a></li> -->
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/perfil/view.html" data-icon="contacts">Mi Perfil</a></li>
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/seguimiento/view.html" data-icon="globe">Seguimineto</a></li>
+<!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/index/view.html" data-icon="add">Index</a></li> -->
+            <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #ff4350;"><a href="components/home/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
         </ul>
     </div>
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-
     <!-- END_CUSTOM_CODE_kendoUiMobileApp -->
 </body>
 

@@ -120,8 +120,9 @@ app.home = kendo.observable({
                 provider.Users.register(email, password, attrs, successHandler, init);
             },
             toggleView: function () {
-                mode = mode === 'signin' ? 'register' : 'signin';
-                init();
+                // mode = mode === 'signin' ? 'register' : 'signin';
+                // init();
+                  app.mobileApp.navigate('components/perfil/view.html');
             }
         });
 

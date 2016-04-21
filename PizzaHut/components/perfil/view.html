@@ -1,5 +1,11 @@
 <div data-role="view" data-title="Registro" data-layout="main" data-model="app.perfil" data-show="app.perfil.onShow" data-after-show="app.perfil.afterShow">
-    <h1 class="km-bold-font" align="center">Dinos más sobre ti</h1>
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">Registro</span>
+        </div>
+    </header>
+    <h1 class="km-bold-font" style="color:black;" align="center">Dinos más sobre ti</h1>
     <div id="perfilModel" class="form-view">
         <form>
             <ul class="form-content" data-role="listview" data-style="inset">
@@ -68,10 +74,10 @@
                     </label>
                 </li>
             </ul>
-            <div class="button-group">
+<!--             <div class="button-group">
                 <a data-role="button" data-bind="events: { click: perfilModel.cancel }">Cancel</a>
                 <a class="primary" data-role="button" data-bind="events: { click: perfilModel.submit }">Confirm</a>
-            </div>
+            </div> -->
         </form>
         <!-- START_CUSTOM_CODE_perfilModel -->
         <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->

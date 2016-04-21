@@ -123,8 +123,7 @@
     vertical-align: top
 }
 #viewCategoria,
-#viewIndex,
-#homeView{
+#viewIndex{
     background-color: transparent;
     background-image: url('images/fondo1.png');
     background-size: auto 100%;

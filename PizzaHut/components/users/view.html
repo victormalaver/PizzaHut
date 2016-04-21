@@ -1,0 +1,31 @@
+<div data-role="view" data-title="Registro" data-layout="main-nonav" data-model="app.users" data-show="app.users.onShow" data-after-show="app.users.afterShow">
+
+    <!-- START_CUSTOM_CODE_users -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_users -->
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+
+            <span data-role="view-title" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+
+            <a data-role="button" data-align="right" data-bind="events: { click: usersModel.addClick }">Add</a>
+        </div>
+    </header>
+
+
+    <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="usersModelTemplate" data-bind="{ source: usersModel.dataSource, events: {click: usersModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+    <!-- START_CUSTOM_CODE_usersModel -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+    <!-- END_CUSTOM_CODE_usersModel -->
+    <script type="text/x-kendo-template" id="usersModelTemplate">
+        <div class="image-with-text">
+            <h3>#: data['nombres'] #</h3>
+
+        </div>
+    </script>
+</div>

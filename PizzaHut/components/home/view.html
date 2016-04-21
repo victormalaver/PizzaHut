@@ -42,32 +42,41 @@
             </ul>
             <div class="button-group button-group-vertical">
                 <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">Iniciar Sesión</a>
-                <a data-role="button" class="primary" data-bind="events: { click: homeModel.toggleView }">Crear una cuenta</a>
+                <!--                 <a data-role="button" class="primary" data-bind="events: { click: homeModel.toggleView }">Crear una cuenta</a> -->
             </div>
         </form>
     </div>
     <div class="signup-view" style="display:none;">
         <form>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <label>Correo
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li class="form-content-item">
+                    <label class="km-label-above">
+                        <span>Nombre de usuario</span>
+                        <input type="text" data-bind="value: homeModel.displayName">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+                        <span>Correo</span>
                         <input type="email" data-bind="value: homeModel.email" required>
                     </label>
                 </li>
-                <li>
-                    <label>Contraseña
+                <li class="form-content-item">
+                    <label class="km-label-above">
+                        <span>Contraseña</span>
                         <input type="password" data-bind="value: homeModel.password">
                     </label>
                 </li>
-                <li>
-                    <label>Apellidos
-                        <input type="text" data-bind="value: homeModel.displayName">
+                <li class="form-content-item">
+                    <label class="km-label-above">
+                        <span>Confirmar contraseña</span>
+                        <input type="password" data-bind="value: homeModel.password2">
                     </label>
                 </li>
             </ul>
             <div class="button-group button-group-vertical">
                 <a class="primary" data-role="button" data-bind="events: { click: homeModel.register }">Registrar</a>
-                <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Iniciar Sesión</a>
+                <!--                 <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Iniciar Sesión</a> -->
             </div>
         </form>
     </div>

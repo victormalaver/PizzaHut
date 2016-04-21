@@ -18,9 +18,11 @@ app.index = kendo.observable({
     afterShow: function () {},
     goToHome: function () {
         app.mobileApp.navigate('components/home/view.html');
+        app.home.homeModel.iniciarView();
     },
     goToPerfil: function () {
-        app.mobileApp.navigate('components/perfil/view.html');
+        app.mobileApp.navigate('components/home/view.html');
+        app.home.homeModel.registroView();
     },
 });
 

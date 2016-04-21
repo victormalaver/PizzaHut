@@ -26,9 +26,13 @@ app.home = kendo.observable({
                 }
                 return false;
             }
-
+			
+            if(mode=="verPerfil"){
+                app.mobileApp.navigate('#components/users/add.html');
+                return true;
+            }
             var activeView = mode === 'signin' ? '.signin-view' : '.signup-view';
-
+            
             if (provider.setup && provider.setup.offlineStorage && !app.isOnline()) {
                 $('.offline').show().siblings().hide();
             } else {
@@ -80,17 +84,26 @@ app.home = kendo.observable({
             displayName: '',
             email: '',
             password: '',
+            password2: '',
             validateData: function (data) {
                 if (!data.email) {
-                    alert('Missing email');
+                    alert('Ingrese su Email');
                     return false;
                 }
 
                 if (!data.password) {
-                    alert('Missing password');
+                    alert('Ingrese su Contraseña');
                     return false;
                 }
 
+                return true;
+            },
+            validatePass: function (data) {
+                console.log(data);
+                if (data.password !== data.password2) {
+                    alert('Las contraseñas no coinciden');
+                    return false;
+                }
                 return true;
             },
             signin: function () {
@@ -116,14 +129,28 @@ app.home = kendo.observable({
                 if (!model.validateData(model)) {
                     return false;
                 }
-
-                provider.Users.register(email, password, attrs, successHandler, init);
+                if (!model.validatePass(model)) {
+                    return false;
+                }
+                mode = 'verPerfil';
+                init();
+                // provider.Users.register(email, password, attrs, successHandler, init);
             },
             toggleView: function () {
-                // mode = mode === 'signin' ? 'register' : 'signin';
-                // init();
-                  app.mobileApp.navigate('components/perfil/view.html');
-            }
+                mode = mode === 'signin' ? 'register' : 'signin';
+                init();
+            },
+            iniciarView: function () {
+                mode = 'signin';
+                init();
+            },
+            registroView: function () {
+                mode = 'register';
+                init();
+            },
+            
+
+
         });
 
     parent.set('homeModel', homeModel);

@@ -12,9 +12,17 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Apellidos</span>
+                        <span>Apellido Paterno</span>
 
-                        <input data-bind="value: perfilModel.fields.apellido" type="text">
+                        <input data-bind="value: perfilModel.fields.ApePaterno" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Apellido Materno</span>
+
+                        <input data-bind="value: perfilModel.fields.ApeMaterno" type="text">
                     </label>
                 </li>
                 <li class="form-content-item">
@@ -62,7 +70,7 @@
 
                         <span>Teléfono</span>
 
-                        <input data-bind="value: perfilModel.fields.telefono" type="text">
+                        <input data-bind="value: perfilModel.fields.celular" type="text">
                     </label>
                 </li>
                 <li class="form-content-item">
@@ -86,5 +94,5 @@
     <!-- START_CUSTOM_CODE_perfil -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_perfil -->
-    <a id="btn-next" data-role="button" class="nav-button" data-icon="details"></a>
+    <a id="btn-next" data-role="button" class="nav-button" data-icon="details" data-bind="events: { click: addItemViewModel.onSaveClick }"></a>
 </div>

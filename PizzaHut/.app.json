@@ -401,6 +401,129 @@
       "title": "Index",
       "addToNavigation": true,
       "icon": "add"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "users",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "nombres",
+                  "title": "Nombre Copleto",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "nombres"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "apePaterno",
+                  "title": "Apellido Paterno",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "apePaterno"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "apeMaterno",
+                  "title": "Apellido Materno",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "apeMaterno"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "telefono",
+                  "title": "Teléfono",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "celular"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "dni",
+                  "title": "Nro. DNI",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "dni"
+                }
+              ],
+              "name": "editableListForm65",
+              "formType": "add"
+            },
+            {
+              "type": "kendo-ui-mobile:editableListForm",
+              "components": [
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "nombres",
+                  "title": "Nombre Completo",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "nombres"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "apePaterno",
+                  "title": "Apellido Paterno",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "apePaterno"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "apeMaterno",
+                  "title": "Apellido Materno",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "apeMaterno"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "telefono",
+                  "title": "Teléfono",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "celular"
+                },
+                {
+                  "type": "kendo-ui-mobile:editableListFormField",
+                  "name": "dni",
+                  "title": "Nro. DNI",
+                  "inputType": "text",
+                  "titlePosition": "top",
+                  "dataBinding": "dni"
+                }
+              ],
+              "name": "editableListForm66",
+              "formType": "edit"
+            }
+          ],
+          "name": "usersModel",
+          "dataProvider": "pizzaHut",
+          "collection": "Perfil",
+          "headerField": "nombres",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderFieldSource": "dataBound",
+          "detailHeaderField": "nombres",
+          "addItemForm": true,
+          "addScreenHeaderValue": "Registro",
+          "editItemForm": true,
+          "editScreenHeaderSource": "dataBound",
+          "editScreenHeaderField": "nombres"
+        }
+      ],
+      "title": "Registro",
+      "addToNavigation": false
     }
   ],
   "dataProviders": [

@@ -1,0 +1,69 @@
+<div id="direccionView" data-role="view" data-title="Registro" data-model="app.direccion" data-bind="events: { show: onShow }">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <!--             <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Save</a> -->
+        </div>
+    </header>
+    <!-- START_CUSTOM_CODE_usersModel -->
+    <!-- END_CUSTOM_CODE_usersModel -->
+    <div class="form-view">
+        <h1 class="km-bold-font" style="color:black;" align="center">Ingresar Dirección</h1>
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Provincia</span>
+
+                        <input id="provincia" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Distrito</span>
+
+                        <input id="ditrito" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Calle</span>
+
+                        <input id="calle" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Nro/Mz/BLK</span>
+
+                        <input id="numero" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Nro. Interior</span>
+
+                        <input id="interior" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span>Referencia</span>
+
+                        <input id="referencia" type="text">
+                    </label>
+                </li>
+            </ul>
+        </form>
+        <!-- START_CUSTOM_CODE_editableListForm65 -->
+        <!-- END_CUSTOM_CODE_editableListForm65 -->
+    </div>
+    <a id="btn-next" data-role="button" class="nav-button" data-icon="details" data-bind="events: { click: onSaveClick }"></a>
+</div>

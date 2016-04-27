@@ -2,8 +2,63 @@
 
 app.categorias = kendo.observable({
     onShow: function () {},
-    afterShow: function () {}
+    afterShow: function () {
+        obtenerDireccion("categoria");
+    }
 });
+
+function goToDirecciones() {
+    // $("#appDrawer").data("kendoMobileDrawer").hide();
+    app.mobileApp.navigate('components/direccion/direcciones.html');
+}
+
+function obtenerDireccion(tipo) {
+    var direccion = [];
+    if (localStorage.getItem("direccionesUsuario") != undefined) {
+        var direccionesGuardadas = JSON.parse(localStorage.getItem('direccionesUsuario'));
+        console.log(direccionesGuardadas);
+        for (var i = 0; i < direccionesGuardadas.length; i++) {
+            if (direccionesGuardadas[i].estado == 1) {
+                direccion.push({
+                    "calle": direccionesGuardadas[i].calle,
+                    "numero": direccionesGuardadas[i].numero,
+                    "distrito": direccionesGuardadas[i].distrito,
+                    "localizacion": direccionesGuardadas[i].localizacion
+                });
+            }
+        }
+        if (tipo == "categoria") {
+            if (direccion == "") {
+                $("#headerDireccionModal").text("Seleccione una dirección");
+                $("#nameDireccionModal").text("  ");
+            } else {
+                $("#headerDireccionModal").text("Usar esta dirección: ");
+                $("#nameDireccionModal").text(direccion[0].calle + " " + direccion[0].numero);
+            }
+            var mv = $("#modalInfoDireccion").data("kendoMobileModalView");
+            mv.shim.popup.options.animation.open.effects = "zoom";
+            mv.open();
+        }
+        if (tipo == "oferta" && direccion == "") {
+            $("#headerDireccionModal").text("Seleccione una dirección");
+            $("#nameDireccionModal").text("  ");
+            var mv = $("#modalInfoDireccion").data("kendoMobileModalView");
+            mv.shim.popup.options.animation.open.effects = "zoom";
+            mv.open();
+        }
+        return direccion;
+    } else {
+        // var mv = $("#modalVerDireccion").data("kendoMobileModalView");
+        // mv.shim.popup.options.animation.open.effects = "zoom";
+        // mv.open();
+        $("#headerDireccionModal").text("Ingrese una dirección");
+        $("#nameDireccionModal").text(" ");
+        var mv = $("#modalInfoDireccion").data("kendoMobileModalView");
+        mv.shim.popup.options.animation.open.effects = "zoom";
+        mv.open();
+        return;
+    }
+}
 
 // START_CUSTOM_CODE_categorias
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
@@ -159,8 +214,8 @@ app.categorias = kendo.observable({
 
     parent.set('onShow', function (e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
-		
         fetchFilteredData(param);
+        // $("#appDrawer").removeAttr("style");
     });
 })(app.categorias);
 

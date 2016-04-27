@@ -1,5 +1,5 @@
 <div id="viewIndex" data-role="view" data-title="" data-layout="main" data-model="app.index" data-show="app.index.onShow" data-after-show="app.index.afterShow">
-    <div style="text-align:center;">
+    <div style="text-align:center;" style="margin: 0 15% 0 15%;">
         <img src="components/index/pizza1.png" width="80%" style="margin-top:50%;"></img>
     </div>
     </br>
@@ -10,17 +10,20 @@
         <a data-role="button" class="primary" data-bind="events: { click: goToPerfil }">Registrase</a>
     </div>
 </div>
-<div id="modalInfoOrden" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
+
+
+<div id="modalInfoRegistro" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
     </br>
     </br>
-    <h3>Su pedido se enviará a la siguiente dirección: </h3>
+    <h3 style="text-align:center;"><b>Con tu cuenta puedes: </b></h3>
     </br>
-    <h3><b>Av. Agustín de la Torre 194</b></h3>
+    <h3>* Guardar tus pedidos favoritos</h3>
+    <h3>* Acelerar la compra al usar tus direcciones guardadas.</h3>
+    <h3>* Recibir ofertas especiales</h3>
     </br>
     <div data-role="footer">
-        <div data-role="navbar">
-            <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoOrden').data('kendoMobileModalView').close();">No</a>
-            <a type="button" data-role="button" data-align="right">Sí</a>
+        <div data-role="navbar" onclick="$('#modalInfoRegistro').data('kendoMobileModalView').close();" style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
+            OK
         </div>
     </div>
 </div>

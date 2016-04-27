@@ -1,9 +1,4 @@
 <div id="viewOferta" data-role="view" data-stretch="true" data-title="Productos" data-layout="main" data-model="app.productos" data-show="app.productos.onShow" data-after-show="app.productos.afterShow">
-    <!-- START_CUSTOM_CODE_productos -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <!-- END_CUSTOM_CODE_productos -->
-    <!--     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="ofertasModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
-    </ul> -->
     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="ofertasModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false" style="margin-top:50%;">
     </ul>
     <!-- START_CUSTOM_CODE_productosModel -->
@@ -23,4 +18,88 @@
             <a data-role="button" style="color: black;background: orange;border-color: transparent;margin: -22% 0 0 65%;padding: 6px;width: 106px;font-size: 16px;">Comprar</a>
         </div>
     </script>
+</div>
+<div id="modalPedidoOferta" data-role="modalview" style="width: 80%;" data-modal="false">
+    <div data-role="header">
+        <div data-role="navbar" style="background-color: transparent;">
+            <div style="text-align:center;">
+                <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;margin-top: 1em;">
+            </div>
+            <a type="button" data-role="button" data-align="right" onclick="$('#modalPedidoOferta').data('kendoMobileModalView').close();" style="float: right;margin: -10px -9px 0 0;">X</a>
+        </div>
+    </div>
+    <input id="productoOferta" placeholder="productoOferta" type="hidden">
+    <input id="nombreOferta" placeholder="nombreOferta" type="hidden">
+    <input id="precioOferta" placeholder="precioOferta" type="hidden">
+    <h4 style="color:#fcd86e">Total</h4>
+    <h1 id="precioProducto" style="color:#fcd86e">S/.</h1>
+    </br>
+    </br>
+    <ul id="listViewGaseosa" data-role="listview">
+        <!--         <li data-role="button" data-rel="actionsheet" href="#actionsheetTamaño" style="border-width: .5px 0 0;border-color: #fcd86e;text-align:left;">Tamaño de tu Pizza</li> -->
+        <!--         <li data-role="button" data-rel="actionsheet" href="#actionsheetMasa" style="border-width: .5px 0 0;border-color: #fcd86e;text-align:left;">Masa</li> -->
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetGaseosa" style="display: inline-block;width:87%;margin:0;border-width: 1px 0 1px;border-color: #fcd86e;text-align:left;">
+            Gaseosa
+        </li>
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetGaseosa" style="display: inline-block;width: 12%;margin: 0;border-width: 1px 0 1px;border-color: #fcd86e;margin-left: -4px;border-left: solid 1px;border-left-color: #fcd86e">
+            <span class="km-icon km-details" style="margin-left: -5px;"></span>
+        </li>
+    </ul>
+    <ul id="actionsheetGaseosa" data-role="actionsheet" data-cancel="Close">
+        <li><a>.</a></li>
+    </ul>
+    <div class="button-group button-group-vertical">
+        <a data-role="button" class="primary" onclick="agregarAlCarrito();" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
+        <a data-role="button" class="primary" onclick="confirmarOrdenOferta();" id="btnVerCarrito" style="background-color: #F09831;padding: 10px;">Ver el carrito</a>
+    </div>
+    </br>
+    </br>
+</div>
+<div id="modalVerDireccion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
+    </br>
+    </br>
+    <h3>Registre su dirección: </h3>
+    </br>
+    <h3><b>Debe ingresar almenos una dirección para el envío de su pedido</b></h3>
+    </br>
+    <div data-role="footer">
+        <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
+            Agregar Dirección
+        </div>
+    </div>
+</div>
+<div id="modalConfirmarPedidoOferta" data-role="modalview" data-model="app.productos" style="width: 80%;" data-modal="false">
+    <div data-role="header">
+        <div data-role="navbar" style="background-color: transparent;">
+            <div style="text-align:center;">
+                <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;margin-top: 1em;">
+            </div>
+            <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();" style="float: right;margin: -10px -9px 0 0;">X</a>
+        </div>
+    </div>
+    <h4 style="color:#fcd86e">Total</h4>
+    <h1 id="precioOrden" style="color:#fcd86e">S/.</h1>
+    </br>
+    </br>
+    <ul id="listViewConfirmarOrdenes" data-role="listview" style="text-align: left;">
+    </ul>
+    <div class="button-group button-group-vertical">
+        <a data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;">Comprar</a>
+    </div>
+    </br>
+    </br>
+    <ul id="actionsheetDeleteOferta" data-role="actionsheet" data-cancel="Close">
+       <li><a>.</a></li>
+    </ul>
+</div>
+<div id="modalConfirmacionOferta" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
+    </br>
+    </br>
+    <h3>Su pedido se ha generado satisfactoriamente</h3>
+    </br>
+    <div data-role="footer">
+        <div data-role="navbar" onclick="$('#modalConfirmacionOferta').data('kendoMobileModalView').close();">
+            OK
+        </div>
+    </div>
 </div>

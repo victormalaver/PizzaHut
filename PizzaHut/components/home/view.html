@@ -1,11 +1,14 @@
 <div id="homeView" data-role="view" data-title="Iniciar Sesión" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
-            <a data-role="backbutton" data-align="left">Back</a>
-            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">Iniciar Sesión</span>
+            <a data-role="backbutton" data-align="left" href="components/index/view.html">Back</a>
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">&nbsp;</span>
         </div>
     </header>
     <div class="signin-view">
+        <div style="text-align:center;">
+            <img src="components/index/pizza1.png" width="80%" style="margin-top:37%;"></img>
+        </div>
         <form>
             <ul data-role="listview" data-style="inset">
                 <li class="form-content-item">
@@ -47,6 +50,9 @@
         </form>
     </div>
     <div class="signup-view" style="display:none;">
+        <div style="text-align:center;">
+            <img src="components/index/pizza1.png" width="80%" style="margin-top:37%;"></img>
+        </div>
         <form>
             <ul class="form-content" data-role="listview" data-style="inset">
                 <li class="form-content-item">
@@ -89,19 +95,4 @@
     <!-- START_CUSTOM_CODE_home -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_home -->
-</div>
-<div id="modalInfoRegistro" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
-    </br>
-    </br>
-    <h3 style="text-align:center;"><b>Con tu cuenta puedes: </b></h3>
-    </br>
-    <h3>* Guardar tus pedidos favoritos</h3>
-    <h3>* Acelerar la compra al usar tus direcciones guardadas.</h3>
-    <h3>* Recibir ofertas especiales</h3>
-    </br>
-    <div data-role="footer">
-        <div data-role="navbar" onclick="$('#modalInfoRegistro').data('kendoMobileModalView').close();">
-            OK
-        </div>
-    </div>
 </div>

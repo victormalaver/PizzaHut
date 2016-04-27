@@ -5,7 +5,7 @@ app.direccion = kendo.observable({
         var miLatLong = [];
         navigator.geolocation.getCurrentPosition(function (position) {
                 miLatLong = [parseFloat(position.coords.latitude), parseFloat(position.coords.longitude)];
-                $("#referencia").val(miLatLong);
+                $("#localizacion").val(miLatLong);
             },
             function (error) {
                 alert('code: ' + error.code + '\n' +
@@ -19,8 +19,8 @@ app.direccion = kendo.observable({
             alert("Ingrese provincia");
             return true;
         }
-        if ($("#ditrito").val() == "") {
-            alert("Ingrese ditrito");
+        if ($("#distrito").val() == "") {
+            alert("Ingrese distrito");
             return true;
         }
         if ($("#calle").val() == "") {
@@ -39,35 +39,45 @@ app.direccion = kendo.observable({
             alert("Ingrese referencia");
             return true;
         }
+        if ($("#localizacion").val() == "") {
+            // alert("Ingrese localización");
+            // return true;
+        }
 
         if (localStorage.getItem("direccionesUsuario") != undefined) {
             var direccionesGuardadas = JSON.parse(localStorage.getItem('direccionesUsuario'));
             direccionesGuardadas.push({
+                "id": direccionesGuardadas.length,
+                "estado": 1,
                 "provincia": $("#provincia").val(),
-                "ditrito": $("#ditrito").val(),
+                "distrito": $("#distrito").val(),
                 "calle": $("#calle").val(),
                 "numero": $("#numero").val(),
                 "interior": $("#interior").val(),
                 "referencia": $("#referencia").val(),
+                "localizacion": $("#localizacion").val()
             });
             localStorage.setItem("direccionesUsuario", JSON.stringify(direccionesGuardadas));
             var direccionesUsuario = localStorage.getItem('direccionesUsuario');
             console.log('IF direccionesUsuario: ', JSON.parse(direccionesUsuario));
         } else {
             var nuevaDireccion = [{
+                "id": 0,
+                "estado": 1,
                 "provincia": $("#provincia").val(),
-                "ditrito": $("#ditrito").val(),
+                "distrito": $("#distrito").val(),
                 "calle": $("#calle").val(),
                 "numero": $("#numero").val(),
                 "interior": $("#interior").val(),
                 "referencia": $("#referencia").val(),
+                "localizacion": $("#localizacion").val()
             }];
             localStorage.setItem("direccionesUsuario", JSON.stringify(nuevaDireccion));
             var direccionesUsuario = localStorage.getItem('direccionesUsuario');
             console.log('ELSE direccionesUsuario: ', JSON.parse(direccionesUsuario));
         }
-
-        app.mobileApp.navigate('components/categorias/view.html');
+        // app.mobileApp.navigate('components/categorias/view.html');
+        app.mobileApp.navigate('#:back');
 
     },
 });

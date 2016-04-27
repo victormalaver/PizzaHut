@@ -1,11 +1,7 @@
 'use strict';
 
 app.home = kendo.observable({
-    onShow: function () {
-        var mv = $("#modalInfoRegistro").data("kendoMobileModalView");
-        mv.shim.popup.options.animation.open.effects = "zoom";
-        mv.open();
-    },
+    onShow: function () {},
     afterShow: function () {}
 });
 
@@ -16,23 +12,28 @@ app.home = kendo.observable({
 (function (parent) {
     var provider = app.data.pizzaHut,
         mode = 'signin',
-        registerRedirect = 'categorias',
-        signinRedirect = 'categorias',
         rememberKey = 'pizzaHut_authData_homeModel',
         init = function (error) {
+            console.log("mode1: " + mode);
             if (error) {
                 if (error.message) {
                     alert(error.message);
                 }
                 return false;
             }
-			
-            if(mode=="verPerfil"){
-                app.mobileApp.navigate('#components/users/add.html');
-                return true;
+
+            var activeView;
+            switch (mode) {
+                case 'signin':
+                    activeView = '.signin-view';
+                    break;
+                case 'register':
+                    activeView = '.signup-view';
+                    break;
+                default:
+                    activeView = '.signin-view';
+                    break;
             }
-            var activeView = mode === 'signin' ? '.signin-view' : '.signup-view';
-            
             if (provider.setup && provider.setup.offlineStorage && !app.isOnline()) {
                 $('.offline').show().siblings().hide();
             } else {
@@ -48,14 +49,30 @@ app.home = kendo.observable({
             }
         },
         successHandler = function (data) {
-            var redirect = mode === 'signin' ? signinRedirect : registerRedirect,
-                model = parent.homeModel || {},
+
+            console.log("mode2: " + mode);
+
+            var model = parent.homeModel || {},
                 logout = model.logout;
 
             if (logout) {
                 model.set('logout', null);
+                mode = "logout";
             }
+
+            var redirect;
+            switch (mode) {
+                case 'signin':
+                    redirect = 'categorias';
+                    break;
+                default:
+                    redirect = 'categorias';
+                    break;
+            }
+
             if (data && data.result) {
+
+                console.log("mode3: " + mode);
                 if (logout) {
                     provider.Users.logout(init, init);
                     return;
@@ -71,12 +88,31 @@ app.home = kendo.observable({
                         app[rememberKey] = rememberedData;
                     }
                 }
+                console.log(app);
                 app.user = data.result;
+                console.log(app.user);
+                console.log("app.user.DisplayName: " + app.user.DisplayName);
+                console.log("app.user.Id: " + app.user.Id);
+                console.log("app.user.principal_id: " + app.user.principal_id);
+                if (app.user.DisplayName) {
+                    $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + app.user.DisplayName);
 
+                } else {
+                    $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + "Mi Perfil");
+                }
+                if (app.user.principal_id) {
+                    $("#DisplayName").attr('href', "components/users/view.html?uid=" + app.user.principal_id);
+                    $("#DisplayName").attr('type', app.user.principal_id);
+                } else {
+                    $("#DisplayName").attr('href', "components/users/view.html?uid=" + app.user.Id);
+                    $("#DisplayName").attr('type', app.user.Id);
+                }
                 setTimeout(function () {
+                    $("#appDrawer").removeAttr("style");
                     app.mobileApp.navigate('components/' + redirect + '/view.html');
                 }, 0);
             } else {
+                console.log("mode4: " + mode);
                 init();
             }
         },
@@ -84,26 +120,17 @@ app.home = kendo.observable({
             displayName: '',
             email: '',
             password: '',
-            password2: '',
             validateData: function (data) {
                 if (!data.email) {
-                    alert('Ingrese su Email');
+                    alert('Missing email');
                     return false;
                 }
 
                 if (!data.password) {
-                    alert('Ingrese su Contraseña');
+                    alert('Missing password');
                     return false;
                 }
 
-                return true;
-            },
-            validatePass: function (data) {
-                console.log(data);
-                if (data.password !== data.password2) {
-                    alert('Las contraseñas no coinciden');
-                    return false;
-                }
                 return true;
             },
             signin: function () {
@@ -129,28 +156,17 @@ app.home = kendo.observable({
                 if (!model.validateData(model)) {
                     return false;
                 }
-                if (!model.validatePass(model)) {
-                    return false;
-                }
-                mode = 'verPerfil';
-                init();
-                // provider.Users.register(email, password, attrs, successHandler, init);
+
+                provider.Users.register(email, password, attrs, successHandler, init);
             },
-            toggleView: function () {
-                mode = mode === 'signin' ? 'register' : 'signin';
+            registrarView: function () {
+                mode = 'register';
                 init();
             },
             iniciarView: function () {
                 mode = 'signin';
                 init();
-            },
-            registroView: function () {
-                mode = 'register';
-                init();
-            },
-            
-
-
+            }
         });
 
     parent.set('homeModel', homeModel);

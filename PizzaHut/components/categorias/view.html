@@ -1,4 +1,10 @@
 <div id="viewCategoria" data-role="view" data-title="Categorias" data-layout="main" data-model="app.categorias" data-show="app.categorias.onShow" data-after-show="app.categorias.afterShow">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" class="km-widget km-button"><span class="km-icon km-drawer-button km-notext"></span></a>
+            <a data-align="right" data-role="button" class="nav-button" data-icon="cart"  href="#components/ordenes/view.html"></a>
+        </div>
+    </header>
     <ul id="listViewCategorias" data-role="listview" data-auto-bind="false" data-style="inset" data-template="categoriasModelTemplate" data-bind="{ source: categoriasModel.dataSource, events: {click: categoriasModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false" style="margin-top: 25%;">
     </ul>
     <script type="text/x-kendo-template" id="categoriasModelTemplate">
@@ -16,7 +22,6 @@
         }
     </style>
 </div>
-
 <div id="modalDemoCategorias" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
     </br>
     </br>

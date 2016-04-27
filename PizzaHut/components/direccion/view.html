@@ -1,11 +1,12 @@
-<div id="direccionView" data-role="view" data-title="Registro" data-model="app.direccion" data-bind="events: { show: onShow }">
+<div id="direccionView" data-role="view" data-title="Registro" data-layout="main-nonav" data-model="app.direccion" data-bind="events: { show: onShow }">
     <header data-role="header">
-        <div data-role="navbar" class="header-text">
+        <div data-role="navbar" class="header-text"  style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
             <a data-role="backbutton" data-align="left">Cancel</a>
             <!--             <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Save</a> -->
         </div>
     </header>
+    
     <!-- START_CUSTOM_CODE_usersModel -->
     <!-- END_CUSTOM_CODE_usersModel -->
     <div class="form-view">
@@ -15,7 +16,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Provincia</span>
+                        <span style="color:black;">Provincia</span>
 
                         <input id="provincia" type="text">
                     </label>
@@ -23,15 +24,15 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Distrito</span>
+                        <span style="color:black;">Distrito</span>
 
-                        <input id="ditrito" type="text">
+                        <input id="distrito" type="text">
                     </label>
                 </li>
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Calle</span>
+                        <span style="color:black;">Calle</span>
 
                         <input id="calle" type="text">
                     </label>
@@ -39,7 +40,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Nro/Mz/BLK</span>
+                        <span style="color:black;">Nro/Mz/BLK</span>
 
                         <input id="numero" type="text">
                     </label>
@@ -47,7 +48,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Nro. Interior</span>
+                        <span style="color:black;">Nro. Interior</span>
 
                         <input id="interior" type="text">
                     </label>
@@ -55,9 +56,17 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Referencia</span>
+                        <span style="color:black;">Referencia</span>
 
                         <input id="referencia" type="text">
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
+
+                        <span style="color:black;">Localización</span>
+
+                        <input id="localizacion" type="text">
                     </label>
                 </li>
             </ul>

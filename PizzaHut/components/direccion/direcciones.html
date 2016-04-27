@@ -1,0 +1,90 @@
+<div id="direccionesView" data-role="view" data-title="Direcciones" data-layout="main-nonav" data-model="app.direcciones" data-show="cargarListadoDirecciones" data-after-show="app.direcciones.afterShow">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <span data-bind="text: currentItem.nombres" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <a data-role="button" data-align="right" data-bind="events: { click: addClick }">Agregar</a>
+        </div>
+    </header>
+    <div id="listaDirecciones" data-auto-bind="false" data-style="">
+    </div>
+    <!--     <div data-auto-bind="false" data-style="" data-template="listadoModelTemplate" data-bind="{ data: direccionesModel.dataSource}">
+    </div> -->
+    <script type="text/x-kendo-template" id="listadoModelTemplate">
+        <div data-role="collapsible" style="margin: 0;">
+            #if( estado ==0 ){#
+            <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"></h3> #}else{#
+            <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"  data-checked="true"></h3> #}#
+            <ul>
+                <li>Provincia: #:provincia#
+                </li>
+                <li>Distrito: #:distrito#
+                </li>
+                <li>Calle: #:calle#
+                </li>
+                <li>Número: #:numero#
+                </li>
+                <li>Interior: #:interior#
+                </li>
+            </ul>
+        </div>
+    </script>
+</div>
+<div id="modalAlertDirecciones" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
+    </br>
+    </br>
+    <h3 style="text-align:center;"><b>Seleccione la dirección de envío</b></h3>
+    </br>
+    <h3>Debe seleccionar almenos una dirección a la que se enviará su pedido.</h3>
+    </br>
+    <div data-role="footer">
+        <div data-role="navbar" onclick="$('#modalAlertDirecciones').data('kendoMobileModalView').close();">
+            OK
+        </div>
+    </div>
+</div>
+<script>
+    function cargarListadoDirecciones() {
+        var dataSource = new kendo.data.DataSource({
+            data: JSON.parse(localStorage.getItem('direccionesUsuario'))
+        });
+        $("#listaDirecciones").kendoMobileListView({
+            dataSource: dataSource,
+            // template: $("#listadoModelTemplate").text()
+            template: kendo.template($("#listadoModelTemplate").html())
+        })
+
+    }
+
+    function onChangeDireccion(e) {
+        var data = JSON.parse(localStorage.getItem('direccionesUsuario'));
+        for (var i = 0; i < data.length; i++) {
+            data[i].estado = 0;
+        }
+        if (e.checked) { //is checked
+            console.log("if: " + e.checked);
+            data[e.sender.element.context.attributes[3].value].estado = 1;
+        } else {
+            console.log("else: " + e.checked);
+            data[e.sender.element.context.attributes[3].value].estado = 0;
+            var mv = $("#modalAlertDirecciones").data("kendoMobileModalView");
+            mv.shim.popup.options.animation.open.effects = "zoom";
+            mv.open();
+        }
+        localStorage.setItem("direccionesUsuario", JSON.stringify(data));
+        cargarListadoDirecciones();
+    }
+</script>
+<style>
+    #listaDirecciones {
+        margin: 0;
+        padding: 0;
+    }
+    #listaDirecciones li {
+        margin: 0;
+        padding: 0;
+    }
+    #listaDirecciones li div div {
+        border-width:0;
+    }
+</style>

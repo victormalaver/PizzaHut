@@ -1,6 +1,8 @@
 /*Start Css*/
+#modalConfirmacionOferta>.km-content,
 #modalInfoRegistro>.km-content,
-#modalInfoOrden>.km-content{
+#modalVerDireccion>.km-content,
+#modalInfoDireccion>.km-content {
     background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%);
 }
 #btn-next {
@@ -35,7 +37,7 @@
 }
 #kendoUiMobileApp .button-group .km-button {
     display: table-cell;
-    padding: 1em;
+    padding: 0.5em;
     /* .6em .8em;*/
     margin: 5% 20%/*1em 0;*/
 }
@@ -154,3 +156,4 @@
 
 
 /* END_CUSTOM_CODE_kendoUiMobileApp */
+

@@ -1,17 +1,17 @@
 'use strict';
 
 app.users = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () {},
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_users
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_users
-(function(parent) {
+(function (parent) {
     var dataProvider = app.data.pizzaHut,
-        fetchFilteredData = function(paramFilter, searchFilter) {
+        fetchFilteredData = function (paramFilter, searchFilter) {
             var model = parent.get('usersModel'),
                 dataSource = model.get('dataSource');
 
@@ -32,9 +32,9 @@ app.users = kendo.observable({
                 dataSource.filter({});
             }
         },
-        flattenLocationProperties = function(dataItem) {
+        flattenLocationProperties = function (dataItem) {
             var propName, propValue,
-                isLocation = function(value) {
+                isLocation = function (value) {
                     return propValue && typeof propValue === 'object' &&
                         propValue.longitude && propValue.latitude;
                 };
@@ -50,13 +50,21 @@ app.users = kendo.observable({
                 }
             }
         },
+        filterExpression = {
+            "users": $("DisplayName").attr("type")
+        },
         dataSourceOptions = {
             type: 'everlive',
             transport: {
                 typeName: 'Perfil',
-                dataProvider: dataProvider
+                dataProvider: dataProvider,
+                read: {
+                    headers: {
+                        "X-Everlive-Filter": JSON.stringify(filterExpression)
+                    }
+                }
             },
-            change: function(e) {
+            change: function (e) {
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
@@ -64,7 +72,7 @@ app.users = kendo.observable({
                     flattenLocationProperties(dataItem);
                 }
             },
-            error: function(e) {
+            error: function (e) {
                 if (e.xhr) {
                     alert(JSON.stringify(e.xhr));
                 }
@@ -84,19 +92,14 @@ app.users = kendo.observable({
         dataSource = new kendo.data.DataSource(dataSourceOptions),
         usersModel = kendo.observable({
             dataSource: dataSource,
-            itemClick: function(e) {
-
-                app.mobileApp.navigate('#components/users/details.html?uid=' + e.dataItem.uid);
+            itemClick: function (e) {
+                app.mobileApp.navigate('#components/users/edit.html?uid=' + e.dataItem.uid);
 
             },
-            addClick: function() {
+            addClick: function () {
                 app.mobileApp.navigate('#components/users/add.html');
             },
-            editClick: function() {
-                var uid = this.currentItem.uid;
-                app.mobileApp.navigate('#components/users/edit.html?uid=' + uid);
-            },
-            detailsShow: function(e) {
+            detailsShow: function (e) {
                 var item = e.view.params.uid,
                     dataSource = usersModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
@@ -108,11 +111,16 @@ app.users = kendo.observable({
                 usersModel.set('currentItem', null);
                 usersModel.set('currentItem', itemModel);
             },
+            goToDirecciones: function (){
+
+                app.mobileApp.navigate('#components/direccion/direcciones.html');
+                
+            },
             currentItem: null
         });
 
     parent.set('addItemViewModel', kendo.observable({
-        onShow: function(e) {
+        onShow: function (e) {
             // Reset the form data.
             this.set('addFormData', {
                 dni: '',
@@ -122,9 +130,9 @@ app.users = kendo.observable({
                 nombres: '',
             });
         },
-        onSaveClick: function(e) {
-            app.mobileApp.navigate('components/direccion/view.html');
-            return true;
+        onSaveClick: function (e) {
+
+            // app.mobileApp.navigate('components/direccion/view.html');
             var addFormData = this.get('addFormData'),
                 dataSource = usersModel.get('dataSource');
 
@@ -134,10 +142,12 @@ app.users = kendo.observable({
                 apeMaterno: addFormData.apeMaterno,
                 apePaterno: addFormData.apePaterno,
                 nombres: addFormData.nombres,
+                users: app.user.Id,
             });
 
-            dataSource.one('change', function(e) {
-                app.mobileApp.navigate('#:back');
+            dataSource.one('change', function (e) {
+                // app.mobileApp.navigate('#:back');
+                app.mobileApp.navigate('components/direccion/view.html');
             });
 
             dataSource.sync();
@@ -145,7 +155,7 @@ app.users = kendo.observable({
     }));
 
     parent.set('editItemViewModel', kendo.observable({
-        onShow: function(e) {
+        onShow: function (e) {
             var itemUid = e.view.params.uid,
                 dataSource = usersModel.get('dataSource'),
                 itemData = dataSource.getByUid(itemUid);
@@ -159,7 +169,7 @@ app.users = kendo.observable({
                 nombres: itemData.nombres,
             });
         },
-        onSaveClick: function(e) {
+        onSaveClick: function (e) {
             var editFormData = this.get('editFormData'),
                 itemData = this.get('itemData'),
                 dataSource = usersModel.get('dataSource');
@@ -171,11 +181,11 @@ app.users = kendo.observable({
             itemData.set('apePaterno', editFormData.apePaterno);
             itemData.set('nombres', editFormData.nombres);
 
-            dataSource.one('sync', function(e) {
+            dataSource.one('sync', function (e) {
                 app.mobileApp.navigate('#:back');
             });
 
-            dataSource.one('error', function() {
+            dataSource.one('error', function () {
                 dataSource.cancelChanges(itemData);
             });
 
@@ -191,10 +201,11 @@ app.users = kendo.observable({
         parent.set('usersModel', usersModel);
     }
 
-    parent.set('onShow', function(e) {
+    parent.set('onShow', function (e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
 
         fetchFilteredData(param);
+
     });
 })(app.users);
 

@@ -39,7 +39,8 @@
     border-color: #888e90;
 }
 .km-nova .km-button.km-state-active {
-    background: #f5f6f6;
+    /*     background: #f5f6f6; */
+    background: #CA3C2F;
 }
 
 /* Primary Button */
@@ -77,7 +78,8 @@
 .km-nova .km-navbar,
 .km-nova .k-toolbar,
 .km-nova .km-tabstrip {
-    background-image: linear-gradient(to bottom, #2e3246 0%, #242736 100%);
+    /*     background-image: linear-gradient(to bottom, #2e3246 0%, #242736 100%); */
+    background-image: none;
 }
 .km-nova .km-vertical-tabstrip {
     background-color: #242736;
@@ -211,7 +213,8 @@
 
 .km-nova .km-list > li {
     border-color: #dfe1e2;
-    color: #32364c;
+    /*     color: #32364c; */
+    color: white;
 }
 .km-nova .km-list > li.km-load-more {
     border-color: transparent;
@@ -236,9 +239,9 @@
 .km-nova .km-list fieldset input,
 .km-nova .km-checkbox-label,
 .km-nova .km-radio-label {
-    color: black;
+    color: white;
     /* #9da2a4;*/
-    text-align: center;
+/*     text-align: center; */
     /*+*/
 }
 .km-nova .km-list fieldset .km-inline-field {
@@ -411,8 +414,10 @@
 
 .km-nova .km-actionsheet > li > a,
 .km-nova .km-popup .k-item {
-    color: #32364c;
-    background: #fff;
+    /*     color: #32364c;
+    background: #fff; */
+    color: white;
+    background: transparent;
 }
 .km-nova .km-actionsheet > li:nth-last-child(2) > a {
     border-image: none;
@@ -423,7 +428,8 @@
 .km-nova .km-shim li.km-actionsheet-title,
 .km-nova .km-popup .k-list-container,
 .km-nova .km-popup .k-item {
-    border-color: #dfe1e2;
+    /*     border-color: #dfe1e2; */
+    border-color: #fcd86e;
 }
 .km-nova .km-actionsheet > .km-actionsheet-cancel > a {
     color: #32364c;
@@ -510,10 +516,23 @@
 .km-nova .km-drawer .km-content {
     /*     background-image: linear-gradient(to bottom, #2e3246 0%, #242736 100%); */
     background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%);
+    /*     background-image: transparent; */
 }
+
 .km-nova .km-navbar {
     background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);
+    /*     background-image: transparent; */
 }
+
+#homeView > header > div {
+    background-image: none;
+}
+#viewCategoria > header > div {
+    background-image: none;
+}
+
+
+
 .km-nova .km-drawer .km-navbar {
     background: #14151e;
 }
@@ -533,7 +552,8 @@
 .km-nova .km-navbar .km-leftitem .km-back:before,
 .km-nova .km-tabstrip *,
 .km-nova .km-drawer .km-list > li {
-    color: #ffffff;
+    /*     color: #ffffff; */
+    color: #fcd86e
 }
 .km-nova .km-drawer .km-list > li > .km-listview-link,
 .km-nova .km-drawer .km-list > li .km-icon {

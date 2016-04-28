@@ -4,6 +4,6 @@ app.direcciones = kendo.observable({
     onShow: function () {},
     afterShow: function () {},
     addClick: function () {
-        app.mobileApp.navigate('#components/direccion/view.html');
+        app.mobileApp.navigate('components/direccion/view.html');
     }
 });

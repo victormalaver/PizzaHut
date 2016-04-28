@@ -16,7 +16,6 @@ function obtenerDireccion(tipo) {
     var direccion = [];
     if (localStorage.getItem("direccionesUsuario") != undefined) {
         var direccionesGuardadas = JSON.parse(localStorage.getItem('direccionesUsuario'));
-        console.log(direccionesGuardadas);
         for (var i = 0; i < direccionesGuardadas.length; i++) {
             if (direccionesGuardadas[i].estado == 1) {
                 direccion.push({
@@ -48,9 +47,6 @@ function obtenerDireccion(tipo) {
         }
         return direccion;
     } else {
-        // var mv = $("#modalVerDireccion").data("kendoMobileModalView");
-        // mv.shim.popup.options.animation.open.effects = "zoom";
-        // mv.open();
         $("#headerDireccionModal").text("Ingrese una dirección");
         $("#nameDireccionModal").text(" ");
         var mv = $("#modalInfoDireccion").data("kendoMobileModalView");

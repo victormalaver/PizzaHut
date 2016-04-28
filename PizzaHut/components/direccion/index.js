@@ -11,7 +11,6 @@ app.direccion = kendo.observable({
                 alert('code: ' + error.code + '\n' +
                     'message: ' + error.message + '\n');
             });
-
     },
     afterShow: function () {},
     onSaveClick: function () {
@@ -46,6 +45,9 @@ app.direccion = kendo.observable({
 
         if (localStorage.getItem("direccionesUsuario") != undefined) {
             var direccionesGuardadas = JSON.parse(localStorage.getItem('direccionesUsuario'));
+            for (var i = 0; i < direccionesGuardadas.length; i++) {
+                direccionesGuardadas[i].estado = 0;
+            }
             direccionesGuardadas.push({
                 "id": direccionesGuardadas.length,
                 "estado": 1,
@@ -60,6 +62,7 @@ app.direccion = kendo.observable({
             localStorage.setItem("direccionesUsuario", JSON.stringify(direccionesGuardadas));
             var direccionesUsuario = localStorage.getItem('direccionesUsuario');
             console.log('IF direccionesUsuario: ', JSON.parse(direccionesUsuario));
+
         } else {
             var nuevaDireccion = [{
                 "id": 0,
@@ -78,6 +81,5 @@ app.direccion = kendo.observable({
         }
         // app.mobileApp.navigate('components/categorias/view.html');
         app.mobileApp.navigate('#:back');
-
     },
 });

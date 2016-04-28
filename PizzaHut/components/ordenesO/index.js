@@ -101,11 +101,7 @@ app.ordenes = kendo.observable({
             serverFiltering: true,
             serverSorting: true,
             serverPaging: true,
-            sort: {
-                field: "CreatedAt",
-                dir: "desc"
-            },
-            pageSize: 20
+            pageSize: 50
         },
         dataSource = new kendo.data.DataSource(dataSourceOptions),
         ordenesModel = kendo.observable({
@@ -124,16 +120,10 @@ app.ordenes = kendo.observable({
                 fetchFilteredData(ordenesModel.get('paramFilter'), searchFilter);
             },
             itemClick: function (e) {
-                console.log(e.data);
-                console.log(e.data.uid);
-                // var x = encodeURIComponent(JSON.stringify({
-                //     field: 'Producto',
-                //     value: e.dataItem.Id,
-                //     operator: 'eq'
-                // }));
+
                 app.mobileApp.navigate('components/ordenes/view.html?filter=' + encodeURIComponent(JSON.stringify({
                     field: 'Producto',
-                    value: e.data.uid,
+                    value: e.dataItem.Id,
                     operator: 'eq'
                 })));
 

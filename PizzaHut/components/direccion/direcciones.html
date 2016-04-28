@@ -8,10 +8,8 @@
     </header>
     <div id="listaDirecciones" data-auto-bind="false" data-style="">
     </div>
-    <!--     <div data-auto-bind="false" data-style="" data-template="listadoModelTemplate" data-bind="{ data: direccionesModel.dataSource}">
-    </div> -->
     <script type="text/x-kendo-template" id="listadoModelTemplate">
-        <div data-role="collapsible" style="margin: 0;">
+        <div data-role="collapsible" style="margin:0;" id="divCollapseDirecciones">
             #if( estado ==0 ){#
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"></h3> #}else{#
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"  data-checked="true"></h3> #}#
@@ -76,15 +74,15 @@
     }
 </script>
 <style>
-    #listaDirecciones {
-        margin: 0;
+    #listaDirecciones > li {
         padding: 0;
+        border-bottom: solid 1px;
+        border-bottom-color: #dfe1e2;
     }
-    #listaDirecciones li {
-        margin: 0;
-        padding: 0;
+    #listaDirecciones .km-collapsible-header {
+        border-width: 0;
     }
-    #listaDirecciones li div div {
-        border-width:0;
+    #direccionesView {
+        background-color: #fff;
     }
 </style>

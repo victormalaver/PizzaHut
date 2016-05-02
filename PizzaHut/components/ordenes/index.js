@@ -95,6 +95,10 @@ app.ordenes = kendo.observable({
                             field: 'Precio',
                             defaultValue: ''
                         },
+                        'Codigo': {
+                            field: 'Codigo',
+                            defaultValue: ''
+                        },
                     }
                 }
             },
@@ -113,7 +117,6 @@ app.ordenes = kendo.observable({
             searchChange: function (e) {
                 var searchVal = e.target.value,
                     searchFilter;
-
                 if (searchVal) {
                     searchFilter = {
                         field: 'Codigo',
@@ -124,18 +127,12 @@ app.ordenes = kendo.observable({
                 fetchFilteredData(ordenesModel.get('paramFilter'), searchFilter);
             },
             itemClick: function (e) {
-                console.log(e.data);
-                console.log(e.data.uid);
-                // var x = encodeURIComponent(JSON.stringify({
-                //     field: 'Producto',
-                //     value: e.dataItem.Id,
+                app.mobileApp.navigate('components/ordenes/seguimiento.html?filter=' + e.data.Id);
+                // app.mobileApp.navigate('components/ordenes/seguimiento.html?filter=' + encodeURIComponent(JSON.stringify({
+                //     field: 'Id',
+                //     value: e.data.uid,
                 //     operator: 'eq'
-                // }));
-                app.mobileApp.navigate('components/ordenes/view.html?filter=' + encodeURIComponent(JSON.stringify({
-                    field: 'Producto',
-                    value: e.data.uid,
-                    operator: 'eq'
-                })));
+                // })));
 
             },
             addClick: function () {

@@ -13,9 +13,19 @@
     <script src="app.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
     <script src="dataProviders/pizzaHut.js"></script>
+    <!--     MAPA leaflet -->
+    <!--     MAPA leaflet -->
+    <link rel="stylesheet" type="text/css" href="Mapa/leaflet.css">
+    <script type="text/javascript" src="Mapa/leaflet.js"></script>
+    <link rel="stylesheet" type="text/css" href="Mapa/MarkerCluster.css">
+    <script type="text/javascript" src="Mapa/leaflet.markercluster-src.js"></script>
+    <link rel="stylesheet" type="text/css" href="Mapa/MarkerCluster.Default.css">
+    <!--     END MAPA leaflet -->
+    <!--     END MAPA leaflet -->
 </head>
 
 <body id="kendoUiMobileApp">
+    <script src="components/ordenes/seguimiento.js"></script>
     <script src="components/direccion/direcciones.js"></script>
     <script src="components/direccion/index.js"></script>
     <script src="components/users/index.js"></script>
@@ -33,6 +43,19 @@
                 <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
             </div>
         </header>
+        <div id="modalVerDireccion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
+            </br>
+            </br>
+            <h3 style="text-align:center;">Registre su dirección: </h3>
+            </br>
+            <h3><b>Debe ingresar almenos una dirección para el envío de su pedido</b></h3>
+            </br>
+            <div data-role="footer">
+                <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
+                    Agregar Dirección
+                </div>
+            </div>
+        </div>
         <div id="modalInfoDireccion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
             </br>
             </br>
@@ -47,23 +70,69 @@
                 </div>
             </div>
         </div>
+        <div id="modalConfirmarPedido" data-role="modalview" data-model="app.productos" style="width: 80%;" data-modal="false">
+            <div data-role="header">
+                <div data-role="navbar" style="background-color: transparent;">
+                    <div style="text-align:center;">
+                        <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;margin-top: 1em;">
+                    </div>
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmarPedido').data('kendoMobileModalView').close();" style="float: right;margin: -10px -9px 0 0;">X</a>
+                </div>
+            </div>
+            <h4 style="color:#fcd86e">Total</h4>
+            <h1 id="precioOrden" style="color:#fcd86e">S/.</h1>
+            </br>
+            </br>
+            <ul id="listViewConfirmar" data-role="listview" style="text-align: left;">
+            </ul>
+            <div class="button-group button-group-vertical">
+                <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;">Comprar</a>
+            </div>
+            </br>
+            </br>
+            <ul id="actionsheetDelete" data-role="actionsheet" data-cancel="Close">
+                <li><a>.</a></li>
+            </ul>
+        </div>
+        <div id="modalConfirmacion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
+            </br>
+            </br>
+            <h3>Su pedido se ha generado satisfactoriamente</h3>
+            </br>
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a type="button" data-role="button" data-align="right" onclick="app.mobileApp.navigate('#components/ordenes/view.html');">Ver seguimiento</a>
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacion').data('kendoMobileModalView').close();">OK</a>
+                </div>
+            </div>
+        </div>
+        <div id="modalConfirmacionCarrito" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
+            </br>
+            </br>
+            <h3>Se agregó al carrito</h3>
+            </br>
+            <div data-role="footer">
+                <div data-role="navbar">
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();confirmarOrden()">Ver carrito</a>
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();">Agregar más</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="appDrawer" data-role="drawer" data-title="" style="width:0rem">
+    <div id="appDrawer" data-role="drawer" data-title="">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>
-        <ul id="navigation-container" data-role="listview"> 
+        <ul id="navigation-container" data-role="listview">
+            <li style="border-width: 1px 0 0;border-color: #ff4350;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
+            <!--             <h6 style="margin: -12px 0 0 46px;color:#ff4350;">S/. 0.00</h6>
+            <h6 style="margin: 0 0 5px 46px;color:#ff4350;">Impuesto incluido</h6> -->
             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Iniciar Sesi&#xF3;n</a></li>
             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
-            <!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/productos/view.html" data-icon="favorites">Productos</a></li> -->
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/ordenes/view.html" data-icon="cart">Carrito</a></li>
-            <!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/combos/view.html" data-icon="favorites">Combos</a></li> -->
-            <!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/perfil/view.html" data-icon="contacts">Mi Perfil</a></li> -->
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/ordenes/view.html" data-icon="globe">Seguimineto</a></li>
-            <!--             <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/index/view.html" data-icon="add">Index</a></li> -->
-            <!--             <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #ff4350;"><a href="components/index/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li> -->
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/ordenes/view.html" data-icon="globe">Seguimiento</a></li>
+            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a onclick="limpiarCache()" data-icon="globe">Limpiar caché</a></li>
             <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #ff4350;"><a href="components/home/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
         </ul>
     </div>

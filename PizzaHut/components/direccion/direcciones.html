@@ -13,7 +13,7 @@
             #if( estado ==0 ){#
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"></h3> #}else{#
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"  data-checked="true"></h3> #}#
-            <ul>
+            <ul style="margin-top:-20px;">
                 <li>Provincia: #:provincia#
                 </li>
                 <li>Distrito: #:distrito#
@@ -24,9 +24,13 @@
                 </li>
                 <li>Interior: #:interior#
                 </li>
+                <a style="position:relative;margin: -32px -32px 0 0;" data-role="detailbutton" data-icon="trash" class="km-style-error" onclick="getCurrentArray('#:calle# #:numero#',#:id#);" data-rel="actionsheet"></a>
             </ul>
         </div>
     </script>
+    <ul id="actionsheetDeleteDireccion"  data-role="actionsheet" data-cancel="Close">
+        <li><a>.</a></li> 
+    </ul>
 </div>
 <div id="modalAlertDirecciones" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
     </br>
@@ -41,39 +45,13 @@
         </div>
     </div>
 </div>
-<script>
-    function cargarListadoDirecciones() {
-        var dataSource = new kendo.data.DataSource({
-            data: JSON.parse(localStorage.getItem('direccionesUsuario'))
-        });
-        $("#listaDirecciones").kendoMobileListView({
-            dataSource: dataSource,
-            // template: $("#listadoModelTemplate").text()
-            template: kendo.template($("#listadoModelTemplate").html())
-        })
-
-    }
-
-    function onChangeDireccion(e) {
-        var data = JSON.parse(localStorage.getItem('direccionesUsuario'));
-        for (var i = 0; i < data.length; i++) {
-            data[i].estado = 0;
-        }
-        if (e.checked) { //is checked
-            console.log("if: " + e.checked);
-            data[e.sender.element.context.attributes[3].value].estado = 1;
-        } else {
-            console.log("else: " + e.checked);
-            data[e.sender.element.context.attributes[3].value].estado = 0;
-            var mv = $("#modalAlertDirecciones").data("kendoMobileModalView");
-            mv.shim.popup.options.animation.open.effects = "zoom";
-            mv.open();
-        }
-        localStorage.setItem("direccionesUsuario", JSON.stringify(data));
-        cargarListadoDirecciones();
-    }
-</script>
 <style>
+    #actionsheetDeleteDireccion .km-state-active {
+        background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);
+    }
+    #actionsheetDeleteDireccion .km-actionsheet-cancel { 
+        display: none;
+    }
     #listaDirecciones > li {
         padding: 0;
         border-bottom: solid 1px;

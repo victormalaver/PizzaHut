@@ -8,8 +8,10 @@ app.direccion = kendo.observable({
                 $("#localizacion").val(miLatLong);
             },
             function (error) {
-                alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
+                miLatLong = [-12.110300550698781, -77.03691065311432];
+                $("#localizacion").val(miLatLong);
+                // alert('code: ' + error.code + '\n' +
+                //     'message: ' + error.message + '\n');
             });
     },
     afterShow: function () {},
@@ -49,7 +51,7 @@ app.direccion = kendo.observable({
                 direccionesGuardadas[i].estado = 0;
             }
             direccionesGuardadas.push({
-                "id": direccionesGuardadas.length,
+                "id": direccionesGuardadas.length+1,
                 "estado": 1,
                 "provincia": $("#provincia").val(),
                 "distrito": $("#distrito").val(),
@@ -65,7 +67,7 @@ app.direccion = kendo.observable({
 
         } else {
             var nuevaDireccion = [{
-                "id": 0,
+                "id": 1,
                 "estado": 1,
                 "provincia": $("#provincia").val(),
                 "distrito": $("#distrito").val(),

@@ -2,7 +2,9 @@
 
 app.users = kendo.observable({
     onShow: function () {},
-    afterShow: function () {}
+    afterShow: function () {
+        countCarrito();
+    }
 });
 
 // START_CUSTOM_CODE_users

@@ -2,7 +2,7 @@
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" class="km-widget km-button"><span class="km-icon km-drawer-button km-notext"></span></a>
-            <a data-align="right" data-role="button" class="nav-button" data-icon="cart"  href="#components/ordenes/view.html"></a>
+            <a data-align="right" data-role="button" class="nav-button" data-icon="cart"  onclick="confirmarOrden()"><span class="km-badge" style="margin: 16px 27px 0 0;">0</span></a>
         </div>
     </header>
     <ul id="listViewCategorias" data-role="listview" data-auto-bind="false" data-style="inset" data-template="categoriasModelTemplate" data-bind="{ source: categoriasModel.dataSource, events: {click: categoriasModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false" style="margin-top: 25%;">

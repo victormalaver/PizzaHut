@@ -1,5 +1,7 @@
 /*Start Css*/
-#modalConfirmacionOferta>.km-content,
+
+#modalConfirmacionCarrito>.km-content,
+#modalConfirmacion>.km-content,
 #modalInfoRegistro>.km-content,
 #modalVerDireccion>.km-content,
 #modalInfoDireccion>.km-content {
@@ -156,4 +158,3 @@
 
 
 /* END_CUSTOM_CODE_kendoUiMobileApp */
-

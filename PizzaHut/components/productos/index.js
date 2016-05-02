@@ -2,7 +2,9 @@
 
 app.productos = kendo.observable({
     onShow: function () {},
-    afterShow: function () {},
+    afterShow: function () {
+        countCarrito();
+    },
 
 });
 
@@ -21,100 +23,103 @@ function actionsheetSeleccion(tipo, valor) {
                 $('li[href="#actionsheetGaseosa"]:first').text(valor);
                 $('li[href="#actionsheetGaseosa"]').attr("class", "km-widget km-button km-state-active");
                 break;
-            default:
+            case "masa":
+                $('li[href="#actionsheetMasa"]:first').text(valor);
+                $('li[href="#actionsheetMasa"]').attr("class", "km-widget km-button km-state-active");
+                break;
+            default: //tamaño
+                $('li[href="#actionsheetTamaño"]:first').text(valor);
+                $('li[href="#actionsheetTamaño"]').attr("class", "km-widget km-button km-state-active");
                 break;
         }
     };
 }
 
-function confirmarOrdenOferta() {
-    $('#modalPedidoOferta').data('kendoMobileModalView').close();
-    // var mv = $("#modalVerDireccion").data("kendoMobileModalView");
-    // mv.shim.popup.options.animation.open.effects = "zoom";
-    // mv.open();
+
+function eliminarSeleccionado(categoria, nombre, i) {
+    $(".km-actionsheet-wrapper").css({
+        "border-radius": "20px",
+        "background-color": "#ff4350"
+    });
     var html = [];
-    var total = 0;
-    if (localStorage.getItem("ordenesCarrito") != undefined) {
-        var ordenesGuardadas = JSON.parse(localStorage.getItem('ordenesCarrito'));
-        if (ordenesGuardadas.length == 0) {
-            localStorage.removeItem("ordenesCarrito");
-            $('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();
-            return;
-        }
-        for (var i = 0; i < ordenesGuardadas.length; i++) {
-            total = total + parseFloat(ordenesGuardadas[i].Producto.precio);
-            // html.push('<li data-role="button" style="border-width: ' + (i == 0 ? '1px': '0') + ' 0 .5px;border-color: #fcd86e;text-align:left; padding: 0.84em 0 0.84em .84em;" class="km-widget km-button">' + ordenesGuardadas[i].Producto.nombre + '</br><p style="font-size:12px;line-height:0;">Gaseosa ' + ordenesGuardadas[i].Producto.gaseosa + '</p></li>');
-            html.push('<li data-role="button" data-rel="actionsheet" style="display: inline-block;width:87%;margin:0;border-width: 1px 0 1px;border-color: #fcd86e;text-align:left;" class="km-widget km-button">' + ordenesGuardadas[i].Producto.nombre + '</li>');
-            html.push('<li data-role="button" data-rel="actionsheet" onclick="ofertaAeliminar(' + "'" + ordenesGuardadas[i].Producto.nombre + "'," + i + ');" style="display: inline-block;width: 13%;margin: 0;border-width: 1px 0 1px;border-color: #fcd86e;border-left: solid 1px;border-left-color: #fcd86e;" class="km-widget km-button">X</li>');
-        }
-        $("#precioOrden").text(total.toFixed(2));
-        $("#listViewConfirmarOrdenes").html(html);
-
-
-        var mv = $("#modalConfirmarPedidoOferta").data("kendoMobileModalView");
-        mv.shim.popup.options.animation.height = 4000;
-        mv.shim.popup.options.animation.open.duration = 400;
-        mv.shim.popup.options.animation.open.effects = "slideIn:up";
-        mv.shim.popup.options.animation.close.duration = 400;
-
-        mv.open();
-
-    } else {
-        $('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();
-        return;
-    }
+    html.push('<li><a  href="#" data-action="elimiarPedido(' + "'" + categoria + "'," + i + ')" >Eliminar ' + nombre + '</a></li>');
+    $("#actionsheetDelete").html(html);
+    $("#actionsheetDelete").data("kendoMobileActionSheet").open();
 }
 
-function ofertaAeliminar(nombre, i) {
-    var html = [];
-    html.push('<li><a  href="#" data-action="elimiarOferta(' + i + ')" >Eliminar ' + nombre + '</a></li>');
-    $("#actionsheetDeleteOferta").html(html);
-    $("#actionsheetDeleteOferta").data("kendoMobileActionSheet").open();
-}
-
-function elimiarOferta(id) {
+function elimiarPedido(categoria, id) {
     return function (e) {
         var ordenesGuardadas = JSON.parse(localStorage.getItem('ordenesCarrito'));
-        ordenesGuardadas.splice(id, 1);
-        localStorage.setItem("ordenesCarrito", JSON.stringify(ordenesGuardadas));
-        confirmarOrdenOferta();
-        $("#actionsheetDeleteOferta").data("kendoMobileActionSheet").close();
-
+        var nuevaordenesGuardadas = []
+        for (var i = 0; i < ordenesGuardadas.length; i++) {
+            if (ordenesGuardadas[i].id !== id) {
+                nuevaordenesGuardadas.push(ordenesGuardadas[i]);
+            }
+        }
+        localStorage.setItem("ordenesCarrito", JSON.stringify(nuevaordenesGuardadas));
+        confirmarOrden(categoria);
+        $("#actionsheetDelete").data("kendoMobileActionSheet").close();
+        countCarrito();
     };
+
 }
 
-function agregarAlCarrito() {
+function agregarAlCarrito(categoria) {
     var direccion = obtenerDireccion("oferta");
 
-    if (direccion == "") {
-        $('#modalPedidoOferta').data('kendoMobileModalView').close();
+    if (!direccion) {
+        $('#modalPedido' + categoria).data('kendoMobileModalView').close();
         return;
     }
 
-    if ($("li[href='#actionsheetGaseosa']:first").text().trim() == "Gaseosa") {
-        $("#actionsheetGaseosa").data("kendoMobileActionSheet").open();
-        return;
+    var gaseosa = "";
+    var tamaño = "";
+    var masa = "";
+    switch (categoria) {
+        case 'Oferta':
+            if ($("li[href='#actionsheetGaseosa']:first").text().trim() == "Gaseosa") {
+                $("#actionsheetGaseosa").data("kendoMobileActionSheet").open();
+                return;
+            }
+            gaseosa = $("li[href='#actionsheetGaseosa']:first").text().trim();
+            break;
+        default:
+            if ($("li[href='#actionsheetTamaño']:first").text().trim() == "Tamaño de tu Pizza") {
+                $("#actionsheetTamaño").data("kendoMobileActionSheet").open();
+                return;
+            }
+            if ($("li[href='#actionsheetMasa']:first").text().trim() == "Masa") {
+                $("#actionsheetMasa").data("kendoMobileActionSheet").open();
+                return;
+            }
+
+            tamaño = $("li[href='#actionsheetTamaño']:first").text().trim();
+            masa = $("li[href='#actionsheetMasa']:first").text().trim();
+            break;
     }
-    var producto = $("#productoOferta").val();
-    var precio = $("#precioOferta").val();
-    var nombre = $("#nombreOferta").val();
-    var gaseosa = $("li[href='#actionsheetGaseosa']:first").text().trim();
+
+    var producto = $("#producto" + categoria).val();
+    var precio = $("#precio" + categoria).val();
+    var nombre = $("#nombre" + categoria).val();
+
     var user = $("#DisplayName").attr("type");
 
-    console.log(direccion);
-    if (producto == "" || direccion == "" || precio == "" || gaseosa == "" || user == "") {
+    if (producto == "" || direccion == "" || precio == "" || user == "") {
         alert("Error: offline");
         return;
     }
     if (localStorage.getItem("ordenesCarrito") != undefined) {
         var ordenesGuardadas = JSON.parse(localStorage.getItem('ordenesCarrito'));
         ordenesGuardadas.push({
-            "Categoria": "Oferta",
+            "id": ordenesGuardadas.length + 1,
+            "Categoria": categoria,
             "Producto": {
                 producto: producto,
                 nombre: nombre,
                 precio: precio,
-                gaseosa: gaseosa
+                gaseosa: gaseosa,
+                tamaño: tamaño,
+                masa: masa
             },
             "Direccion": direccion
         });
@@ -123,12 +128,14 @@ function agregarAlCarrito() {
         console.log('IF ordenesCarrito: ', JSON.parse(ordenesCarrito));
     } else {
         var nuevaOrden = [{
-            "Categoria": "Oferta",
+            "id": 1,
             "Producto": {
                 producto: producto,
                 nombre: nombre,
                 precio: precio,
-                gaseosa: gaseosa
+                gaseosa: gaseosa,
+                tamaño: tamaño,
+                masa: masa
             },
             "Direccion": direccion
             }];
@@ -136,7 +143,12 @@ function agregarAlCarrito() {
         var ordenesCarrito = localStorage.getItem('ordenesCarrito');
         console.log('ELSE ordenesCarrito: ', JSON.parse(ordenesCarrito));
     }
-    $('#modalPedidoOferta').data('kendoMobileModalView').close();
+    $('#modalPedido' + categoria).data('kendoMobileModalView').close();
+    countCarrito();
+
+    var mv = $("#modalConfirmacionCarrito").data("kendoMobileModalView");
+    mv.shim.popup.options.animation.open.effects = "zoom";
+    mv.open();
 }
 
 
@@ -244,34 +256,39 @@ function agregarAlCarrito() {
         productosModel = kendo.observable({
             dataSource: dataSource,
             itemClickPizza: function (e) {
-                // app.mobileApp.navigate('#components/productos/details.html?uid=' + e.data.uid);
+                // app.mobileApp.navigate('#components/productos/details.html?uid=' + e.dataItem.uid);
+                console.log(e);
 
-                $("#precioProducto").text("S/. " + e.data.Precio);
+                $("#productoPizza").val(e.data.Id);
+                $("#precioPizza").val(e.data.Precio);
+                $("#nombrePizza").val(e.data.Nombre);
+
+
+                $("#precioProductoPizza").text("S/. " + e.data.Precio);
 
                 $('li[href="#actionsheetTamaño"]').attr("class", "km-widget km-button");
                 $('li[href="#actionsheetMasa"]').attr("class", "km-widget km-button");
-                $('li[href="#actionsheetGaseosa"]').attr("class", "km-widget km-button");
 
-                $('li[href="#actionsheetTamaño"]').text("Tamaño de tu Pizza");
-                $('li[href="#actionsheetMasa"]').text("Masa");
-                $('li[href="#actionsheetGaseosa"]:first').text("Gaseosa");
+                $('li[href="#actionsheetTamaño"]:first').text("Tamaño de tu Pizza");
+                $('li[href="#actionsheetMasa"]:first').text("Masa");
 
                 var html = [];
                 for (var i = 0; i < e.data.Tamano.length; i++) {
-                    html.push('<li><a  href="#" onclick="actionsheetSeleccion(' + "'tamaño'" + ",'" + e.data.Tamano[i] + "'" + ')" >' + e.data.Tamano[i] + '</a></li>');
+                    html.push('<li><a  href="#" data-action="actionsheetSeleccion(' + "'tamaño'" + ",'" + e.data.Tamano[i] + "'" + ')" >' + e.data.Tamano[i] + '</a></li>');
                 }
                 $("#actionsheetTamaño").html(html);
 
                 var html = [];
 
                 for (var i = 0; i < e.data.Masa.length; i++) {
-                    html.push('<li><a  href="#" onclick="actionsheetSeleccion(' + "'masa'" + ",'" + e.data.Masa[i] + "'" + ')" >' + e.data.Masa[i] + '</a></li>');
+                    html.push('<li><a  href="#" data-action="actionsheetSeleccion(' + "'masa'" + ",'" + e.data.Masa[i] + "'" + ')" >' + e.data.Masa[i] + '</a></li>');
                 }
                 $("#actionsheetMasa").html(html);
 
                 // var html = [];
-                // for (var i = 0; i < e.data.Gaseosa.length; i++) {
-                //     html.push('<li><a  href="#" onclick="actionsheetSeleccion(' + "'gaseosa'" + ",'" + e.data.Gaseosa[i] + "'" + ')" >' + e.data.Gaseosa[i] + '</a></li>');
+                // for (var i = 0; i < e.dataItem.Gaseosa.length; i++) {
+                //     // html.push('<li onclick="actionsheetSeleccion(' + "'gaseosa'" + ",'" + e.dataItem.Gaseosa[i] + "'" + ')" ><a  href="#"  >' + e.dataItem.Gaseosa[i] + '</a></li>');
+                //     html.push('<li><a  href="#" data-action="actionsheetSeleccion(' + "'gaseosa'" + ",'" + e.dataItem.Gaseosa[i] + "'" + ')" >' + e.dataItem.Gaseosa[i] + '</a></li>');
                 // }
                 // $("#actionsheetGaseosa").html(html);
 
@@ -286,10 +303,22 @@ function agregarAlCarrito() {
                     "background-color": "#ff4350"
                 });
 
+                if (localStorage.getItem("ordenesCarrito") != undefined) {
+                    if (localStorage.getItem("ordenesCarrito").length > 0) {
+                        $("#btnVerCarrito").removeClass("km-state-disabled");
+                        $("#btnVerCarrito").attr("data-enable", "true");
+                    } else {
+                        $("#btnVerCarrito").addClass("km-state-disabled");
+                        $("#btnVerCarrito").attr("data-enable", "false");
+                    }
+                } else {
+                    $("#btnVerCarrito").addClass("km-state-disabled");
+                    $("#btnVerCarrito").attr("data-enable", "false");
+                }
+
             },
             itemClick: function (e) {
                 // app.mobileApp.navigate('#components/productos/details.html?uid=' + e.dataItem.uid);
-                console.log(e);
 
                 $("#productoOferta").val(e.dataItem.Id);
                 $("#precioOferta").val(e.dataItem.Precio);
@@ -298,12 +327,7 @@ function agregarAlCarrito() {
 
                 $("#precioProducto").text("S/. " + e.dataItem.Precio);
 
-                $('li[href="#actionsheetTamaño"]').attr("class", "km-widget km-button");
-                $('li[href="#actionsheetMasa"]').attr("class", "km-widget km-button");
                 $('li[href="#actionsheetGaseosa"]').attr("class", "km-widget km-button");
-
-                $('li[href="#actionsheetTamaño"]').text("Tamaño de tu Pizza");
-                $('li[href="#actionsheetMasa"]').text("Masa");
                 $('li[href="#actionsheetGaseosa"]:first').text('Gaseosa');
 
                 // var html = [];
@@ -325,8 +349,6 @@ function agregarAlCarrito() {
                     html.push('<li><a  href="#" data-action="actionsheetSeleccion(' + "'gaseosa'" + ",'" + e.dataItem.Gaseosa[i] + "'" + ')" >' + e.dataItem.Gaseosa[i] + '</a></li>');
                 }
                 $("#actionsheetGaseosa").html(html);
-
-
 
                 var mv = $("#modalPedidoOferta").data("kendoMobileModalView");
                 mv.shim.popup.options.animation.open.effects = "zoom";
@@ -366,44 +388,7 @@ function agregarAlCarrito() {
                 productosModel.set('currentItem', itemModel);
             },
             sendBSorden: function (e) {
-                console.log(e);
-
-                var html = [];
-                var total = 0;
-                var localizacion = "";
-                var codigo = "";
-                var estado = "Espera";
-                var producto = [];
-                var sucursal = "";
-                var user = "";
-                var direccion = "";
-                var precio = "";
-                if (localStorage.getItem("ordenesCarrito") != undefined) {
-                    var ordenesGuardadas = JSON.parse(localStorage.getItem('ordenesCarrito'));
-                    for (var i = 0; i < ordenesGuardadas.length; i++) {
-                        console.log(ordenesGuardadas[i]);
-                        total = total + parseFloat(ordenesGuardadas[i].Producto.precio);
-                        producto.push(ordenesGuardadas[i].Producto);
-                    }
-                } else {
-                    console.log("sin carrrito");
-                    $('#modalPedidoOferta').data('kendoMobileModalView').close();
-                    $('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();
-                    return;
-                }
-
-                localizacion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].localizacion;
-                codigo = "111";
-                sucursal = "123456789";
-                user = $("#DisplayName").attr("type");
-                direccion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion;
-                precio = total.toFixed(2);
-                //                 console.log(localizacion);
-                //                 console.log(codigo);
-                //                 console.log(sucursal);
-                //                 console.log(user);
-                //                 console.log(direccion);
-                //                 console.log(precio);
+                kendo.mobile.application.showLoading();
                 var dataSourceOrden = new kendo.data.DataSource({
                     type: 'everlive',
                     transport: {
@@ -416,31 +401,68 @@ function agregarAlCarrito() {
                         }
                     }
                 });
-                dataSourceOrden.add({
-                    Localizacion: localizacion,
-                    Codigo: codigo,
-                    Estado: estado,
-                    Producto: producto,
-                    Sucursal: sucursal,
-                    User: user,
-                    Direccion: direccion,
-                    Precio: precio,
+
+                dataSourceOrden.fetch(function () {
+                    var html = [];
+                    var total = 0;
+                    var localizacion = "";
+                    var codigo = "";
+                    var estado = "Espera";
+                    var producto = [];
+                    var sucursal = "";
+                    var user = "";
+                    var direccion = "";
+                    var precio = "";
+                    if (localStorage.getItem("ordenesCarrito") != undefined) {
+                        var ordenesGuardadas = JSON.parse(localStorage.getItem('ordenesCarrito'));
+                        for (var i = 0; i < ordenesGuardadas.length; i++) {
+                            total = total + parseFloat(ordenesGuardadas[i].Producto.precio);
+                            producto.push(ordenesGuardadas[i].Producto);
+                        }
+                    } else {
+                        $('#modalConfirmarPedido').data('kendoMobileModalView').close();
+                        kendo.mobile.application.hideLoading();
+                        return;
+                    }
+
+                    localizacion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].localizacion;
+
+                    console.log("localizacion: " + localizacion);
+                    var latitude = localizacion.split(",")[0];
+                    var longitude = localizacion.split(",")[1];
+                    codigo = dataSourceOrden.total() + 1;
+                    sucursal = "";
+                    user = $("#DisplayName").attr("type");
+                    direccion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion;
+                    precio = total.toFixed(2);
+                    dataSourceOrden.add({
+                        Localizacion: {
+                            longitude: parseFloat(longitude),
+                            latitude: parseFloat(latitude)
+                        },
+                        Codigo: codigo.toString(),
+                        Estado: estado,
+                        Producto: producto,
+                        Sucursal: sucursal,
+                        User: user,
+                        Direccion: direccion,
+                        Precio: precio,
+                    });
+
+                    dataSourceOrden.one('change', function (e) {
+                        // app.mobileApp.navigate('#:back');
+                        $('#modalConfirmarPedido').data('kendoMobileModalView').close();
+                        localStorage.removeItem("ordenesCarrito");
+                        var mv = $("#modalConfirmacion").data("kendoMobileModalView");
+                        mv.shim.popup.options.animation.open.effects = "zoom";
+                        mv.open();
+                        kendo.mobile.application.hideLoading();
+                        countCarrito();
+                    });
+
+                    dataSourceOrden.sync();
+
                 });
-
-                dataSourceOrden.one('change', function (e) {
-                    // app.mobileApp.navigate('#:back');
-                    $('#modalPedidoOferta').data('kendoMobileModalView').close();
-                    $('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();
-                    localStorage.removeItem("ordenesCarrito");
-
-                    var mv = $("#modalConfirmacionOferta").data("kendoMobileModalView");
-                    mv.shim.popup.options.animation.open.effects = "zoom";
-                    mv.open();
-                    return;
-                });
-
-                dataSourceOrden.sync();
-
 
             },
             currentItem: null

@@ -1,0 +1,48 @@
+<div id="Seguimiento" data-role="view" data-title="Seguimiento" data-layout="main" data-model="app.seguimiento.seguimientoModel" data-show="app.seguimiento.onShow" data-after-show="app.seguimiento.afterShow">
+    <header data-role="header">
+        <div id="headerSeguimiento" data-role="navbar" class="header-text">
+            <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+        </div>
+    </header>
+    <div id="divMapSeguimiento" align="center">
+    </div>
+    <div id="mapSeguimiento" style="width:100%;"></div>
+    <div data-role="footer">
+        <div id="footerSeguimiento" data-role="tabstrip">
+            <a style="font-size: .9em;"><h1 id="distanciaPedido" style="margin: -19px 0 0 0;font-size: xx-large;color:#fcd86e;"></h1></br>Metros</a>
+            <a style="font-size: .9em;"><h1 id="tiempoTranscurrido" style="margin: -19px 0 0 0;font-size: xx-large;color:#fcd86e;"></h1></br>Tiempo transcurrido</a>
+            <a data-icon="history" data-bind="{events:{click: searchChange}}" style="font-size: .9em; padding-top: 11px;">Actualizar</a>
+        </div>
+    </div>
+</div>
+<style>
+    .km-nova .km-tabstrip .km-button.km-state-active {
+        background-image: none;
+    }
+    #headerSeguimiento,
+    #footerSeguimiento {
+        font: normal 1em "Helvetica Neue", "Helvetica", "Roboto Light", "Arial", "Verdana", "sans-serif";
+        background-image: none;
+        background-color: #ff4350;
+        /*         font-size: 1.2em; */
+        /*         line-height: 2.78em; */
+    }
+    #miDireccion2 {
+        /*         width: 75%;
+        border-radius: 20px;
+        padding: 0 0 0 20px;
+        border: 0px; */
+        
+        width: 70%;
+        border-radius: 20px;
+        padding: 2px 0px 0px 20px;
+        font-size: 1.2em;
+        border: 0px solid;
+        border-color: #fcd86e;
+    }
+    #tagSucursal2 {
+        font-size: 15px;
+        margin: 0 0 0 20px;
+    }
+</style>

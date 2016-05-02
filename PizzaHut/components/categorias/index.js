@@ -4,6 +4,7 @@ app.categorias = kendo.observable({
     onShow: function () {},
     afterShow: function () {
         obtenerDireccion("categoria");
+        countCarrito();
     }
 });
 
@@ -47,9 +48,7 @@ function obtenerDireccion(tipo) {
         }
         return direccion;
     } else {
-        $("#headerDireccionModal").text("Ingrese una dirección");
-        $("#nameDireccionModal").text(" ");
-        var mv = $("#modalInfoDireccion").data("kendoMobileModalView");
+        var mv = $("#modalVerDireccion").data("kendoMobileModalView");
         mv.shim.popup.options.animation.open.effects = "zoom";
         mv.open();
         return;

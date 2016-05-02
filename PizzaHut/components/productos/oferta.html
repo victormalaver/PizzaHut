@@ -1,4 +1,10 @@
 <div id="viewOferta" data-role="view" data-stretch="true" data-title="Ofertas" data-layout="main" data-model="app.productos" data-show="app.productos.onShow" data-after-show="app.productos.afterShow">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" class="km-widget km-button"><span class="km-icon km-drawer-button km-notext"></span></a>
+            <a data-align="right" data-role="button" class="nav-button" data-icon="cart"  onclick="confirmarOrden()"><span class="km-badge" style="margin: 16px 27px 0 0;">0</span></a>
+        </div>
+    </header>
     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="ofertasModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false" style="margin-top:50%;">
     </ul>
     <!-- START_CUSTOM_CODE_productosModel -->
@@ -49,57 +55,9 @@
         <li><a>.</a></li>
     </ul>
     <div class="button-group button-group-vertical">
-        <a data-role="button" class="primary" onclick="agregarAlCarrito();" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
-        <a data-role="button" class="primary" onclick="confirmarOrdenOferta();" id="btnVerCarrito" style="background-color: #F09831;padding: 10px;">Ver el carrito</a>
+        <a data-role="button" class="primary" onclick="agregarAlCarrito('Oferta');" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
+        <a data-role="button" class="primary" onclick="confirmarOrden('Oferta');" id="btnVerCarrito" style="background-color: #F09831;padding: 10px;">Ver el carrito</a>
     </div>
+    </br> 
     </br>
-    </br>
-</div>
-<div id="modalVerDireccion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
-    </br>
-    </br>
-    <h3>Registre su dirección: </h3>
-    </br>
-    <h3><b>Debe ingresar almenos una dirección para el envío de su pedido</b></h3>
-    </br>
-    <div data-role="footer">
-        <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
-            Agregar Dirección
-        </div>
-    </div>
-</div>
-<div id="modalConfirmarPedidoOferta" data-role="modalview" data-model="app.productos" style="width: 80%;" data-modal="false">
-    <div data-role="header">
-        <div data-role="navbar" style="background-color: transparent;">
-            <div style="text-align:center;">
-                <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;margin-top: 1em;">
-            </div>
-            <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmarPedidoOferta').data('kendoMobileModalView').close();" style="float: right;margin: -10px -9px 0 0;">X</a>
-        </div>
-    </div>
-    <h4 style="color:#fcd86e">Total</h4>
-    <h1 id="precioOrden" style="color:#fcd86e">S/.</h1>
-    </br>
-    </br>
-    <ul id="listViewConfirmarOrdenes" data-role="listview" style="text-align: left;">
-    </ul>
-    <div class="button-group button-group-vertical">
-        <a data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;">Comprar</a>
-    </div>
-    </br>
-    </br>
-    <ul id="actionsheetDeleteOferta" data-role="actionsheet" data-cancel="Close">
-       <li><a>.</a></li>
-    </ul>
-</div>
-<div id="modalConfirmacionOferta" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
-    </br>
-    </br>
-    <h3>Su pedido se ha generado satisfactoriamente</h3>
-    </br>
-    <div data-role="footer">
-        <div data-role="navbar" onclick="$('#modalConfirmacionOferta').data('kendoMobileModalView').close();">
-            OK
-        </div>
-    </div>
 </div>

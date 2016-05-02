@@ -241,7 +241,7 @@
 .km-nova .km-radio-label {
     color: white;
     /* #9da2a4;*/
-/*     text-align: center; */
+    /*     text-align: center; */
     /*+*/
 }
 .km-nova .km-list fieldset .km-inline-field {
@@ -518,23 +518,23 @@
     background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%);
     /*     background-image: transparent; */
 }
-
 .km-nova .km-navbar {
     background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);
     /*     background-image: transparent; */
 }
-
 #homeView > header > div {
     background-image: none;
 }
+
+#bienvenidaView > header > div,
+#viewOferta > header > div,
+#viewProducto > header > div,
 #viewCategoria > header > div {
     background-image: none;
 }
-
-
-
 .km-nova .km-drawer .km-navbar {
-    background: #14151e;
+    /*     background: #14151e; */
+    background-image: linear-gradient(to bottom, #f19932 0%, #f19932 100%);
 }
 .km-nova .km-tabstrip .km-button.km-state-active {
     background-image: linear-gradient(to bottom, #1e202d 0%, #14151e 100%);

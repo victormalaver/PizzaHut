@@ -1,4 +1,10 @@
 <div id="viewProducto" data-role="view" data-stretch="true" data-title="Pizzas" data-layout="main" data-model="app.productos" data-show="app.productos.onShow" data-after-show="app.productos.afterShow">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" class="km-widget km-button"><span class="km-icon km-drawer-button km-notext"></span></a>
+            <a data-align="right" data-role="button" class="nav-button" data-icon="cart" onclick="confirmarOrden()"><span class="km-badge" style="margin: 16px 27px 0 0;">0</span></a>
+        </div>
+    </header>
     <!-- START_CUSTOM_CODE_productos -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_productos -->
@@ -32,7 +38,7 @@
         $("#next-img").click(function (e) {
             var scrollView = $("#scrollViewProducto").data("kendoMobileScrollView");
             scrollView.next();
-        });
+        }); 
     </script>
     <style>
         #viewProducto .photo {
@@ -75,53 +81,42 @@
 <div id="modalPedidoPizza" data-role="modalview" style="width: 80%;" data-modal="false">
     <div data-role="header">
         <div data-role="navbar" style="background-color: transparent;">
-            <a type="button" data-role="button" data-align="right" onclick="$('#modalPedidoPizza').data('kendoMobileModalView').close();">X</a>
+            <div style="text-align:center;">
+                <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;margin-top: 1em;">
+            </div>
+            <a type="button" data-role="button" data-align="right" onclick="$('#modalPedidoPizza').data('kendoMobileModalView').close();" style="float: right;margin: -10px -9px 0 0;">X</a>
         </div>
     </div>
-    <!--     <header data-role="header">
-        <div data-role="navbar">
-            <span data-role="view-title"></span>
-            <a data-align="right" data-role="button" class="nav-button" data-icon="home" href="#/"></a>
-            <a data-align="right" data-icon="source-code" data-click="goToSourceCode" data-role="button" title="Show this demo source code"></a>
-        </div>
-    </header> -->
-    <!--     <div data-role="header">
-        <div data-role="navbar">
-            <span data-role="view-title">Hello World!</span>
-            <a data-align="right" data-role="button">Close</a>
-        </div>
-    </div>  -->
-    <div style="text-align:center;">
-        <img src="components/productos/logo1.png" style="width: 80%;padding: 0 0 0 0;">
-    </div>
+    <input id="productoPizza" placeholder="productoPizza" type="hidden">
+    <input id="nombrePizza" placeholder="nombrePizza" type="hidden">
+    <input id="precioPizza" placeholder="precioPizza" type="hidden">
     <h4 style="color:#fcd86e">Total</h4>
-    <h1 class="precioProducto" style="color:#fcd86e">S/.</h1>
+    <h1 id="precioProductoPizza" style="color:#fcd86e">S/.</h1>
     </br>
     </br>
     <ul data-role="listview">
-        <li data-role="button" data-rel="actionsheet" href="#actionsheetTamaño" style="border-width: .5px 0 0;border-color: #fcd86e;text-align:left;">Tamaño de tu Pizza</li>
-        <li data-role="button" data-rel="actionsheet" href="#actionsheetMasa" style="border-width: .5px 0 .5px;border-color: #fcd86e;text-align:left;">Masa</li>
-        <!--         <li data-role="button" data-rel="actionsheet" href="#actionsheetGaseosa" style="border-width: .5px 0 .5px;border-color: #fcd86e;text-align:left;">Gaseosa</li> -->
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetTamaño" style="display: inline-block;width:87%;margin:0;border-width: 1px 0 1px;border-color: #fcd86e;text-align:left;">
+            Tamaño
+        </li>
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetTamaño" style="display: inline-block;width: 12%;margin: 0;border-width: 1px 0 1px;border-color: #fcd86e;margin-left: -4px;border-left: solid 1px;border-left-color: #fcd86e">
+            <span class="km-icon km-details" style="margin-left: -5px;"></span>
+        </li>
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetMasa" style="display: inline-block;width:87%;margin:0;border-width: 1px 0 1px;border-color: #fcd86e;text-align:left;">
+            Masa
+        </li>
+        <li data-role="button" data-rel="actionsheet" href="#actionsheetMasa" style="display: inline-block;width: 12%;margin: 0;border-width: 1px 0 1px;border-color: #fcd86e;margin-left: -4px;border-left: solid 1px;border-left-color: #fcd86e">
+            <span class="km-icon km-details" style="margin-left: -5px;"></span>
+        </li>
     </ul>
     <ul id="actionsheetTamaño" data-role="actionsheet" data-cancel="Close">
-        <li><a>Foo</a></li>
-        <li><a>Bar</a></li>
+        <li><a>.</a></li>
     </ul>
     <ul id="actionsheetMasa" data-role="actionsheet" data-cancel="Close">
-        <li><a>Foo</a></li>
-        <li><a>Bar</a></li>
+        <li><a>.</a></li>
     </ul>
-    <!--     <ul id="actionsheetGaseosa" data-role="actionsheet" data-cancel="Close">
-        <li><a>Foo</a></li>
-        <li><a>Bar</a></li>
-    </ul> -->
-    <!--     <div class="button-group">
-        <a data-role="button" data-bind="events: { click: perfilModel.cancel }">Cancel</a>
-        <a class="primary" data-role="button" data-bind="events: { click: perfilModel.submit }">Confirm</a>
-    </div> -->
     <div class="button-group button-group-vertical">
-        <a data-role="button" class="primary" data-bind="events: { click: goToHome }" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
-        <a data-role="button" class="primary" data-bind="events: { click: goToPerfil }" style="background-color: #F09831;padding: 10px;">Ordenar</a>
+        <a data-role="button" class="primary" onclick="agregarAlCarrito('Pizza');" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
+        <a data-role="button" class="primary" onclick="confirmarOrden('Pizza');" id="btnVerCarrito" style="background-color: #F09831;padding: 10px;">Ver el carrito</a>
     </div>
     </br>
     </br>

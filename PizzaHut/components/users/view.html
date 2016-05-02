@@ -1,11 +1,8 @@
-<div id="bienvenidaView" data-role="view" data-title="Mi Perfil" data-layout="main-nonav" data-model="app.users"  data-show="app.users.onShow" data-after-show="app.users.afterShow">
-    <!-- START_CUSTOM_CODE_users -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <!-- END_CUSTOM_CODE_users -->
+<div id="bienvenidaView" data-role="view" data-title="Mi Perfil" data-layout="main" data-model="app.users" data-show="app.users.onShow" data-after-show="app.users.afterShow">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
-            <span data-role="view-title" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
-            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+            <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" class="km-widget km-button"><span class="km-icon km-drawer-button km-notext"></span></a>
+            <a data-align="right" data-role="button" class="nav-button" data-icon="cart" onclick="confirmarOrden()"><span class="km-badge" style="margin: 16px 27px 0 0;">0</span></a>
         </div>
     </header>
     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="usersModelTemplate" data-bind="{ source: usersModel.dataSource, events: {click: usersModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
@@ -24,7 +21,7 @@
             </div>
         </div>
     </script>
-    <div class="button-group button-group-vertical"  style="text-align:center;margin-top:-13%;font-size: 1.2em;">
+    <div class="button-group button-group-vertical" style="text-align:center;margin-top:-13%;font-size: 1.2em;">
         <a data-role="button" class="primary" data-bind="{ events: {click: usersModel.goToDirecciones} }">Mis direcciones</a>
     </div>
 </div>

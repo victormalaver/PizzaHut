@@ -16,6 +16,8 @@ app.index = kendo.observable({
         //     $("#appDrawer").attr("style","width:0rem;") 
         //     app.home.homeModel.cerrarSesion();
         // }
+        
+        countCarrito();
 
     }, 
     afterShow: function () {

@@ -9,7 +9,7 @@
     </ul>
     <script type="text/x-kendo-template" id="categoriasModelTemplate">
         <div class="image-with-text">
-            <img src="#: data['PictureUrl'] #" width="100%" height="100%" style="border-radius:25%;">
+            <img src="#: data['PictureUrl'] #" width="100%" height="100%" style="border-radius:25%; #: data['Nombre']=="Ofertas" || data['Nombre']=="Pizzas"? "" : "opacity:0.5" #  "  >
             </br>
             <h3>#: data['Nombre'] #</h3>
         </div>

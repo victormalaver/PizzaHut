@@ -12,7 +12,7 @@ app.direcciones = kendo.observable({
 function getCurrentArray(direccion, id) {
     $(".km-actionsheet-wrapper").css({
         "border-radius": "20px",
-        "background-color": "#ff4350"
+        "background-color": "#e12f33"
     });
 
     var html = [];

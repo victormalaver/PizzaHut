@@ -25,6 +25,7 @@
 </head>
 
 <body id="kendoUiMobileApp">
+    <script src="components/direccion/direccion.js"></script>
     <script src="components/ordenes/seguimiento.js"></script>
     <script src="components/direccion/direcciones.js"></script>
     <script src="components/direccion/index.js"></script>
@@ -51,7 +52,7 @@
             <h3><b>Debe ingresar almenos una dirección para el envío de su pedido</b></h3>
             </br>
             <div data-role="footer">
-                <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);">
+                <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
                     Agregar Dirección
                 </div>
             </div>
@@ -63,10 +64,15 @@
             </br>
             <h3><b id="nameDireccionModal"></b></h3>
             </br>
-            <div data-role="footer">
-                <div data-role="navbar">
+            <!--             <div data-role="footer">
+                <div data-role="navbar"> 
                     <a type="button" data-role="button" data-align="right" onclick="goToDirecciones();">Cambiar</a>
                     <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoDireccion').data('kendoMobileModalView').close();">Ok</a>
+                </div>
+            </div> -->
+            <div data-role="footer">
+                <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
+                    Agregar Dirección
                 </div>
             </div>
         </div>
@@ -85,24 +91,27 @@
             </br>
             <ul id="listViewConfirmar" data-role="listview" style="text-align: left;">
             </ul>
-            <div class="button-group button-group-vertical">
+            <!--             <div class="button-group button-group-vertical">
                 <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;">Comprar</a>
-            </div>
+            </div> -->
             </br>
             </br>
             <ul id="actionsheetDelete" data-role="actionsheet" data-cancel="Close">
                 <li><a>.</a></li>
             </ul>
+            <div data-role="footer" style="background-color: transparent;">
+                <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
+            </div>
         </div>
         <div id="modalConfirmacion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
             </br>
             </br>
-            <h3>Su pedido se ha generado satisfactoriamente</h3>
+            <h3>Se ha realizado su pedido</h3>
+            <h3>SATISFACTORIAMENTE</h3>
             </br>
             <div data-role="footer">
-                <div data-role="navbar">
-                    <a type="button" data-role="button" data-align="right" onclick="app.mobileApp.navigate('#components/ordenes/view.html');">Ver seguimiento</a>
-                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacion').data('kendoMobileModalView').close();">OK</a>
+                <div data-role="navbar" onclick="$('#modalConfirmacion').data('kendoMobileModalView').close();" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
+                    Aceptar
                 </div>
             </div>
         </div>
@@ -119,21 +128,21 @@
             </div>
         </div>
     </div>
-    <div id="appDrawer" data-role="drawer" data-title="">
+    <div id="appDrawer" data-role="drawer" data-title="&nbsp">
         <header data-role="header">
-            <div data-role="navbar">
+            <div data-role="navbar" style="background-size: 100% 100%; background-image:url('components/productos/logo1.png');">
                 <span data-role="view-title"></span>
             </div>
         </header>
         <ul id="navigation-container" data-role="listview">
-            <li style="border-width: 1px 0 0;border-color: #ff4350;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
-            <!--             <h6 style="margin: -12px 0 0 46px;color:#ff4350;">S/. 0.00</h6>
-            <h6 style="margin: 0 0 5px 46px;color:#ff4350;">Impuesto incluido</h6> -->
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Iniciar Sesi&#xF3;n</a></li>
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a href="components/ordenes/view.html" data-icon="globe">Seguimiento</a></li>
-            <li style="border-width: 1px 0 0;border-color: #ff4350;"><a onclick="limpiarCache()" data-icon="globe">Limpiar caché</a></li>
-            <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #ff4350;"><a href="components/home/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
+            <!--             <h6 style="margin: -12px 0 0 46px;color:#e12f33;">S/. 0.00</h6>
+            <h6 style="margin: 0 0 5px 46px;color:#e12f33;">Impuesto incluido</h6> -->
+            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Iniciar Sesi&#xF3;n</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/ordenes/view.html" data-icon="globe">Seguimiento</a></li>
+            <!--             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a onclick="limpiarCache()" data-icon="globe">Limpiar caché</a></li> -->
+            <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #e12f33;"><a href="components/home/view.html?logout=true" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
         </ul>
     </div>
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->

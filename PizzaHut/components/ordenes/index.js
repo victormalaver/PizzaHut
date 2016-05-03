@@ -2,7 +2,8 @@
 
 app.ordenes = kendo.observable({
     onShow: function () {},
-    afterShow: function () {}
+    afterShow: function () {
+    }
 });
 
 // START_CUSTOM_CODE_ordenes
@@ -66,7 +67,16 @@ app.ordenes = kendo.observable({
             type: 'everlive',
             transport: {
                 typeName: 'Orden',
-                dataProvider: dataProvider
+                dataProvider: dataProvider,
+                read: {
+                    headers: {
+                        "X-Everlive-Filter": JSON.stringify({
+                            "$and": [{
+                                "User": $("#DisplayName").attr("type")
+                            }]
+                        })
+                    }
+                }
             },
             change: function (e) {
                 var data = this.data();
@@ -275,8 +285,6 @@ app.ordenes = kendo.observable({
 
     parent.set('onShow', function (e) {
         var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
-
-        fetchFilteredData(param);
     });
 })(app.ordenes);
 

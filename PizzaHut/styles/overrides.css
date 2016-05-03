@@ -28,7 +28,8 @@
 .km-nova .km-shim,
 .km-phone .km-nova .km-actionsheet-wrapper,
 .km-nova .km-actionsheet-root {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    /*0.4*/
 }
 
 /* Button */
@@ -47,8 +48,8 @@
 
 .km-nova .km-primary {
     color: #fff;
-    background: #ff4350;
-    border-color: #ff4350;
+    background: #e12f33;
+    border-color: #e12f33;
 }
 .km-nova .km-icon-button,
 .km-nova .km-list .km-icon-button .km-icon {
@@ -106,10 +107,11 @@
 .km-nova .km-drawer .km-navbar,
 .km-nova .km-drawer .km-vertical-tabstrip .km-button.km-state-active,
 .km-nova .km-drawer .km-listview li.km-state-active {
-    background: #1e202d;
+    /*     background: #1e202d; */
+    background: transparent;
 }
 .km-nova .km-light .km-view-title {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova .km-light.km-navbar,
 .km-nova .km-light.k-toolbar,
@@ -121,7 +123,7 @@
 .km-nova .km-accent.km-tabstrip,
 .km-nova .km-vertical-tabstrip .km-button.km-state-active:before,
 .km-nova .km-drawer .km-listview li.km-state-active:before {
-    background: #ff4350;
+    background: #e12f33;
 }
 .km-nova .km-listview-link:after,
 .km-nova .km-listview-label:after {
@@ -141,7 +143,7 @@
 .km-nova .km-light.km-navbar .km-back:before,
 .km-nova .km-light.k-toolbar .km-back:before,
 .km-nova .km-light.km-navbar .km-button {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova .km-navbar .km-button,
 .km-nova .k-toolbar .km-button {
@@ -159,12 +161,12 @@
     background-color: #9ca6a6;
 }
 .km-nova .km-buttongroup.km-primary .km-button {
-    color: #ff4350;
-    border-color: #ff4350;
+    color: #e12f33;
+    border-color: #e12f33;
 }
 .km-nova .km-buttongroup.km-primary .km-state-active {
     color: #fff;
-    background-color: #ff4350;
+    background-color: #e12f33;
 }
 
 /* Inverse ButtonGroup */
@@ -181,10 +183,10 @@
 .km-nova .km-inverse.km-primary .km-button {
     color: #fff;
     border-color: #fff;
-    background-color: #ff4350;
+    background-color: #e12f33;
 }
 .km-nova .km-inverse.km-primary .km-state-active {
-    color: #ff4350;
+    color: #e12f33;
     background-color: #fff;
 }
 
@@ -228,7 +230,7 @@
 .km-nova .km-collapsible-header h4,
 .km-nova .km-collapsible-header h5,
 .km-nova .km-collapsible-header h6 {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova .km-legend-button,
 .km-nova .km-drawer a {
@@ -241,14 +243,14 @@
 .km-nova .km-radio-label {
     color: white;
     /* #9da2a4;*/
-    /*     text-align: center; */
+    text-align: center;
     /*+*/
 }
 .km-nova .km-list fieldset .km-inline-field {
     border-color: #dfe1e2;
 }
 .km-nova label.km-required:after {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova .km-group-title,
 .km-nova .km-list fieldset legend,
@@ -260,14 +262,15 @@
 .km-nova .km-popup .k-state-focused,
 .km-nova .km-popup .k-state-selected {
     color: #f8fafb;
-    background: #ff4350;
+    background: #e12f33;
 }
 
 /* Drawer */
 
 .km-nova .km-drawer {
     color: #fff;
-    background-color: #2a2d40;
+    /*     background-color: #2a2d40; */
+    background-color: #fcd86e
 }
 .km-nova .km-drawer .km-content {
     background-color: #2a2d40;
@@ -316,7 +319,7 @@
     background-color: #dfe1e2;
 }
 .km-nova .k-slider-selection {
-    background-color: #ff4350;
+    background-color: #e12f33;
 }
 .km-nova .k-slider .k-draghandle,
 .km-nova .k-slider .k-draghandle:hover {
@@ -326,15 +329,15 @@
 /* Switch */
 
 .km-nova .km-switch-wrapper {
-    border-color: #ff4350;
-    background-color: #ff4350;
+    border-color: #e12f33;
+    background-color: #e12f33;
 }
 .km-nova .km-switch-off .km-switch-container {
     border-color: #f8fafb;
     background-color: #f8fafb;
 }
 .km-nova span.km-switch {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova span.km-switch-off {
     color: #f8fafb;
@@ -359,7 +362,7 @@
     /*#dfe1e2;*/
 }
 .km-nova .km-pages .km-current-page {
-    background: #ff4350;
+    background: #e12f33;
     /*#dfe1e2;*/
 }
 
@@ -367,21 +370,21 @@
 
 .km-nova input[type=radio],
 .km-nova input[type=checkbox] {
-    color: #ff4350;
+    color: #e12f33;
     border-color: #dee7ec;
 }
 .km-nova input[type=checkbox]:checked:after {
-    color: #ff4350;
+    color: #e12f33;
 }
 .km-nova input[type=radio]:checked:after,
 .km-nova.km-on-android .km-view input[type=radio].km-check:checked:after {
-    background: #ff4350;
+    background: #e12f33;
 }
 
 /* Standalone Checkboxes and RadioButtons */
 
 .km-nova .km-checkbox:checked + .km-checkbox-label:after {
-    color: #ff4350;
+    color: #e12f33;
     border-color: #dee7ec;
 }
 .km-nova .km-checkbox-label:before {
@@ -392,17 +395,18 @@
     color: #dee7ec;
 }
 .km-nova .km-radio:checked + .km-radio-label:after {
-    background: #ff4350;
+    background: #e12f33;
 }
 
 /* ModalView */
 
 .km-nova .km-modalview,
 .km-nova .km-modalview .km-footer .km-rightitem {
-    background: #ff4350/*#fff;*/
+    background: #e12f33/*#fff;*/
 }
 .km-nova .km-modalview .km-footer .km-button {
-    color: #59859b;
+    /*     color: #59859b; */
+    color: white;
     border-color: #f19932/*#dfe1e2;*/
 }
 .km-nova .km-modalview .km-footer .km-rightitem .km-button:last-child,
@@ -461,7 +465,7 @@
 }
 .km-nova .km-detail,
 .km-nova .km-detail .km-icon:after {
-    color: #ff4350;
+    color: #e12f33;
     background: #fff;
 }
 .km-nova .km-list > li .km-style-default .km-icon:after {
@@ -481,8 +485,8 @@
 }
 .km-nova .km-badge {
     color: #fff;
-    background: #ff4350;
-    border-color: #ff4350;
+    background: #e12f33;
+    border-color: #e12f33;
 }
 .km-nova .km-loading-left:before {
     background: #32364c;
@@ -519,13 +523,12 @@
     /*     background-image: transparent; */
 }
 .km-nova .km-navbar {
-    background-image: linear-gradient(to bottom, #ff4350 0%, #ff4350 100%);
+    background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);
     /*     background-image: transparent; */
 }
 #homeView > header > div {
     background-image: none;
 }
-
 #bienvenidaView > header > div,
 #viewOferta > header > div,
 #viewProducto > header > div,
@@ -552,12 +555,12 @@
 .km-nova .km-navbar .km-leftitem .km-back:before,
 .km-nova .km-tabstrip *,
 .km-nova .km-drawer .km-list > li {
-    /*     color: #ffffff; */
-    color: #fcd86e
+    color: #fff;
+    /*     color: #fcd86e */
 }
 .km-nova .km-drawer .km-list > li > .km-listview-link,
 .km-nova .km-drawer .km-list > li .km-icon {
-    color: #ff4350;
+    color: #e12f33;
 }
 
 /*Custom overrides*/
@@ -566,8 +569,8 @@
 /*Primary button*/
 
 .km-nova .button-group .km-button.primary {
-    background-color: #ff4350;
-    border-color: #ff4350;
+    background-color: #e12f33;
+    border-color: #e12f33;
     color: #fff;
 }
 .km-nova .button-group .km-button.primary.km-state-active {
@@ -579,8 +582,8 @@
 
 .km-nova .km-switch-wrapper,
 .km-nova span.km-switch.km-switch-on input[type=checkbox]:checked + span + span {
-    border-color: #ff4350;
-    background-color: #ff4350;
+    border-color: #e12f33;
+    background-color: #e12f33;
 }
 
 /*Active state for drawer navigation*/
@@ -592,7 +595,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #ff4350;
+    background: #e12f33;
 }
 .km-nova #navigation-container.km-tabstrip .km-button {
     vertical-align: middle;

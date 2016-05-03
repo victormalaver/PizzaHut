@@ -39,7 +39,7 @@ function actionsheetSeleccion(tipo, valor) {
 function eliminarSeleccionado(categoria, nombre, i) {
     $(".km-actionsheet-wrapper").css({
         "border-radius": "20px",
-        "background-color": "#ff4350"
+        "background-color": "#e12f33"
     });
     var html = [];
     html.push('<li><a  href="#" data-action="elimiarPedido(' + "'" + categoria + "'," + i + ')" >Eliminar ' + nombre + '</a></li>');
@@ -105,7 +105,8 @@ function agregarAlCarrito(categoria) {
     var user = $("#DisplayName").attr("type");
 
     if (producto == "" || direccion == "" || precio == "" || user == "") {
-        alert("Error: offline");
+        $('#modalPedido' + categoria).data('kendoMobileModalView').close();
+        console.log("Error: faltan datos");
         return;
     }
     if (localStorage.getItem("ordenesCarrito") != undefined) {
@@ -300,7 +301,7 @@ function agregarAlCarrito(categoria) {
 
                 $(".km-actionsheet-wrapper").css({
                     "border-radius": "20px",
-                    "background-color": "#ff4350"
+                    "background-color": "#e12f33"
                 });
 
                 if (localStorage.getItem("ordenesCarrito") != undefined) {
@@ -356,7 +357,7 @@ function agregarAlCarrito(categoria) {
 
                 $(".km-actionsheet-wrapper").css({
                     "border-radius": "20px",
-                    "background-color": "#ff4350"
+                    "background-color": "#e12f33"
                 });
 
                 if (localStorage.getItem("ordenesCarrito") != undefined) {

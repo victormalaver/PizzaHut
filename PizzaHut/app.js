@@ -118,6 +118,15 @@ function confirmarOrden(categoria) {
         return;
     }
 }
+
+function cerrarSesion(){
+    app.mobileApp.navigate("#components/home/view.html?logout=true");
+    $("#DisplayName").attr('href', "components/index/view.html");
+    $("#homeModellogout").css("display","none");
+    $("#homeModellogout").prev().css("border-width","1px 0 1px");
+    $("#DisplayName").attr("type","");
+    $('#DisplayName').html('<span class="km-icon km-contacts"></span>Iniciar Sesión');
+}
 // START_CUSTOM_CODE_kendoUiMobileApp
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 

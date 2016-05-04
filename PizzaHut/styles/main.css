@@ -1,12 +1,27 @@
 /*Start Css*/
 
+#modalDemoCategorias,
+#modalConfirmacionCarrito,
+#modalConfirmacion,
+#modalInfoRegistro,
+#modalVerDireccion,
+#modalInfoDireccion {
+    background: transparent;
+    /*     border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px; */
+    /*      border-top-left-radius: 40px;
+    border-top-right-radius: 40px; */
+}
 #modalDemoCategorias>.km-content,
 #modalConfirmacionCarrito>.km-content,
 #modalConfirmacion>.km-content,
-#modalInfoRegistro>.km-content,
+#modalInfoRegistro>.km-content, 
 #modalVerDireccion>.km-content,
 #modalInfoDireccion>.km-content {
-    background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%);
+    /*     background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%); */
+    background: linear-gradient(#f19932, #fcd86e);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
 }
 #btn-next {
     background-color: #f19932;

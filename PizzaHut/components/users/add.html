@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Add" data-model="app.users.addItemViewModel" data-bind="events: { show: onShow }" id="usersModelAddItemView">
+<div id="usersModelAddItemView" data-role="view" data-title="Registro" data-model="app.users.addItemViewModel" data-bind="events: { show: onShow }" >
     <header data-role="header">
         <div data-role="navbar" class="header-text" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
@@ -15,7 +15,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Nombre Completo</span>
+                        <span style="color:black;">Nombre</span>
 
                         <input id="nombres" data-bind="value: addFormData.nombres" type="text">
                     </label>
@@ -23,7 +23,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Apellido Paterno</span>
+                        <span style="color:black;">Apellido Paterno</span>
 
                         <input id="apePaterno" data-bind="value: addFormData.apePaterno" type="text">
                     </label>
@@ -31,7 +31,7 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Apellido Materno</span>
+                        <span style="color:black;">Apellido Materno</span>
 
                         <input id="apeMaterno" data-bind="value: addFormData.apeMaterno" type="text">
                     </label>
@@ -39,17 +39,17 @@
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Teléfono</span>
+                        <span style="color:black;">Teléfono</span>
 
-                        <input id="telefono" data-bind="value: addFormData.telefono" type="text">
+                        <input id="telefono" data-bind="value: addFormData.telefono" type="number" >
                     </label>
                 </li>
                 <li class="form-content-item">
                     <label class="km-label-above">
 
-                        <span>Nro. DNI</span>
+                        <span style="color:black;">Nro. DNI</span>
 
-                        <input id="dni" data-bind="value: addFormData.dni" type="text">
+                        <input id="dni" data-bind="value: addFormData.dni" type="number" >
                     </label>
                 </li>
             </ul>

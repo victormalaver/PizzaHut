@@ -148,25 +148,29 @@ function muestraReloj(fechaMod) {
             var miLatLong = [];
             var miArgument = [];
             //Cambiear esto por el GPS del despachador
-            navigator.geolocation.getCurrentPosition(function (position) {
-                    miLatLong = [parseFloat(position.coords.latitude), parseFloat(position.coords.longitude)];
-                    miArgument = 'Latitude: ' + position.coords.latitude + '<br />' +
-                        'Longitude: ' + position.coords.longitude + '<br />' +
-                        'Altitude: ' + position.coords.altitude + '<br />' +
-                        'Accuracy: ' + position.coords.accuracy + '<br />' +
-                        'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
-                        'Heading: ' + position.coords.heading + '<br />' +
-                        'Speed: ' + position.coords.speed + '<br />' +
-                        'Timestamp: ' + position.timestamp + '<br />';
-                    cargaPosAlmacenesDespachador(dataSource, miLatLong, miArgument);
-                },
-                function (error) {
-//                     alert('code: ' + error.code + '\n' +
-//                         'message: ' + error.message + '\n'); 
-                    miLatLong = "Aqui colocar la ubicación del despachador";
-                    miArgument = 'Despachador PizzaHut';
-                    cargaPosAlmacenesDespachador(dataSource, miLatLong, miArgument);
-                });
+            // navigator.geolocation.getCurrentPosition(function (position) {
+            //         miLatLong = [parseFloat(position.coords.latitude), parseFloat(position.coords.longitude)];
+            //         miArgument = 'Latitude: ' + position.coords.latitude + '<br />' +
+            //             'Longitude: ' + position.coords.longitude + '<br />' +
+            //             'Altitude: ' + position.coords.altitude + '<br />' +
+            //             'Accuracy: ' + position.coords.accuracy + '<br />' +
+            //             'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+            //             'Heading: ' + position.coords.heading + '<br />' +
+            //             'Speed: ' + position.coords.speed + '<br />' +
+            //             'Timestamp: ' + position.timestamp + '<br />';
+            //         cargaPosAlmacenesDespachador(dataSource, miLatLong, miArgument);
+            //     },
+            //     function (error) {
+            // //                     alert('code: ' + error.code + '\n' +
+            // //                         'message: ' + error.message + '\n'); 
+            //         miLatLong = "Aqui colocar la ubicación del despachador";
+            //         miArgument = 'Despachador PizzaHut';
+            //         cargaPosAlmacenesDespachador(dataSource, miLatLong, miArgument);
+            //     });
+
+            miLatLong = "Aqui colocar la ubicación del despachador";
+            miArgument = 'Despachador PizzaHut';
+            cargaPosAlmacenesDespachador(dataSource, miLatLong, miArgument);
         },
         processImage = function (img) {
             if (!img) {

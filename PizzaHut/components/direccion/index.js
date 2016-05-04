@@ -1,5 +1,4 @@
 'use strict';
-
 app.direccion = kendo.observable({
     onShow: function () {
         var miLatLong = [];
@@ -14,13 +13,19 @@ app.direccion = kendo.observable({
                 //     'message: ' + error.message + '\n');
             });
     },
-    afterShow: function () {},
+    afterShow: function () {
+        cargarComboDepartamentos();
+    },
     onSaveClick: function () {
-        if ($("#provincia").val() == "") {
+        if ($("#departamentoAdd").val() == "") {
             alert("Ingrese provincia");
             return true;
         }
-        if ($("#distrito").val() == "") {
+        if ($("#provinciaAdd").val() == "") {
+            alert("Ingrese provincia");
+            return true;
+        }
+        if ($("#distritoAdd").val() == "") {
             alert("Ingrese distrito");
             return true;
         }
@@ -51,10 +56,11 @@ app.direccion = kendo.observable({
                 direccionesGuardadas[i].estado = 0;
             }
             direccionesGuardadas.push({
-                "id": direccionesGuardadas.length+1,
+                "id": direccionesGuardadas.length + 1,
                 "estado": 1,
-                "provincia": $("#provincia").val(),
-                "distrito": $("#distrito").val(),
+                "departamento": $("#departamentoAdd option:selected").text(),
+                "provincia": $("#provinciaAdd option:selected").text(),
+                "distrito": $("#distritoAdd option:selected").text(),
                 "calle": $("#calle").val(),
                 "numero": $("#numero").val(),
                 "interior": $("#interior").val(),
@@ -69,8 +75,9 @@ app.direccion = kendo.observable({
             var nuevaDireccion = [{
                 "id": 1,
                 "estado": 1,
-                "provincia": $("#provincia").val(),
-                "distrito": $("#distrito").val(),
+                "departamento": $("#departamentoAdd option:selected").text(),
+                "provincia": $("#provinciaAdd option:selected").text(),
+                "distrito": $("#distritoAdd option:selected").text(),
                 "calle": $("#calle").val(),
                 "numero": $("#numero").val(),
                 "interior": $("#interior").val(),
@@ -85,3 +92,67 @@ app.direccion = kendo.observable({
         app.mobileApp.navigate('#:back');
     },
 });
+
+
+
+
+//Se recuperan los departamentos de la base de datos
+function cargarComboDepartamentos() {
+    var render = function (tx, rs) {
+        var data = "";
+        for (var i = 0; i < rs.rows.length; i++) {
+            data += "<option value=" + rs.rows.item(i).DPTOCOD + ">" + rs.rows.item(i).DPTODES + "</option>";
+        }
+        $("#departamentoAdd").html(data);
+
+        $("#departamentoAdd").val(15);
+
+        cargarComboProvincias();
+        
+    };
+    var db = appSqlite.db;
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM departamento", [],
+            render,
+            appSqlite.onError);
+    });
+
+}
+
+//Se recuperan de la base de datos las provincias del departamento seleccionado
+function cargarComboProvincias() {
+    var dep = "'" + $('#departamentoAdd').val() + "'";
+    var render = function (tx, rs) {
+        var data = "";
+        for (var i = 0; i < rs.rows.length; i++) {
+            data += "<option value=" + rs.rows.item(i).PROVCOD + ">" + rs.rows.item(i).PROVDES + "</option>";
+        }
+        $("#provinciaAdd").html(data);
+        cargarComboDistritos();
+    };
+    var db = appSqlite.db;
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM provincia where DPTOCOD=" + dep, [],
+            render,
+            appSqlite.onError);
+    });
+}
+
+//Se recuperan de la base de datos las provincias del departamento seleccionado
+function cargarComboDistritos() {
+    var pro = "'" + $('#provinciaAdd').val() + "'";
+    var dep = "'" + $('#departamentoAdd').val() + "'";
+    var render = function (tx, rs) {
+        var data = "";
+        for (var i = 0; i < rs.rows.length; i++) {
+            data += "<option value=" + rs.rows.item(i).DISTCOD + ">" + rs.rows.item(i).DISTDES + "</option>";
+        }
+        $("#distritoAdd").html(data);
+    };
+    var db = appSqlite.db;
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM distrito where PROVCOD=" + pro + " and DPTOCOD=" + dep, [],
+            render,
+            appSqlite.onError);
+    });
+}

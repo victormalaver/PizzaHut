@@ -2,8 +2,7 @@
 
 app.ordenes = kendo.observable({
     onShow: function () {},
-    afterShow: function () {
-    }
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_ordenes
@@ -68,15 +67,15 @@ app.ordenes = kendo.observable({
             transport: {
                 typeName: 'Orden',
                 dataProvider: dataProvider,
-                read: {
-                    headers: {
-                        "X-Everlive-Filter": JSON.stringify({
-                            "$and": [{
-                                "User": $("#DisplayName").attr("type")
-                            }]
-                        })
-                    }
-                }
+                // read: {
+                //     headers: {
+                //         "X-Everlive-Filter": JSON.stringify({
+                //             "$and": [{
+                //                 "User": $("#DisplayName").attr("type")
+                //             }]
+                //         })
+                //     }
+                // }
             },
             change: function (e) {
                 var data = this.data();
@@ -284,7 +283,18 @@ app.ordenes = kendo.observable({
     }
 
     parent.set('onShow', function (e) {
-        var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
+        // var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
+        var param = $("#DisplayName").attr("type");
+        var searchVal = param,
+            searchFilter;
+        if (searchVal) {
+            searchFilter = {
+                field: 'User', // -> Id is ok , Seguimiento dont work
+                operator: 'eq',
+                value: param,
+            };
+        }
+        fetchFilteredData(ordenesModel.get('paramFilter'), searchFilter);
     });
 })(app.ordenes);
 

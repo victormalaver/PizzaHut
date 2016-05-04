@@ -8,7 +8,6 @@ app.direcciones = kendo.observable({
     }
 });
 
-
 function getCurrentArray(direccion, id) {
     $(".km-actionsheet-wrapper").css({
         "border-radius": "20px",
@@ -63,10 +62,10 @@ function onChangeDireccion(e) {
     }
     if (e.checked) { //is checked
         console.log("if: " + e.checked);
-        data[e.sender.element.context.attributes[3].value-1].estado = 1;
+        data[e.sender.element.context.attributes[3].value - 1].estado = 1;
     } else {
         console.log("else: " + e.checked);
-        data[e.sender.element.context.attributes[3].value-1].estado = 0;
+        data[e.sender.element.context.attributes[3].value - 1].estado = 0;
         var mv = $("#modalAlertDirecciones").data("kendoMobileModalView");
         mv.shim.popup.options.animation.open.effects = "zoom";
         mv.open();

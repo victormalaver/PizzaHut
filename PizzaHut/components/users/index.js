@@ -30,6 +30,13 @@ app.users = kendo.observable({
                 });
             } else if (paramFilter || searchFilter) {
                 dataSource.filter(paramFilter || searchFilter);
+                console.log(dataSource);
+                dataSource.fetch(function () {
+                    console.log(dataSource.total());
+                    if( dataSource.total() == 0 ){
+                        app.mobileApp.navigate('#components/users/add.html');
+                    }
+                });
             } else {
                 dataSource.filter({});
             }
@@ -113,10 +120,10 @@ app.users = kendo.observable({
                 usersModel.set('currentItem', null);
                 usersModel.set('currentItem', itemModel);
             },
-            goToDirecciones: function (){
+            goToDirecciones: function () {
 
                 app.mobileApp.navigate('#components/direccion/direcciones.html');
-                
+
             },
             currentItem: null
         });
@@ -148,8 +155,8 @@ app.users = kendo.observable({
             });
 
             dataSource.one('change', function (e) {
-                // app.mobileApp.navigate('#:back');
-                app.mobileApp.navigate('components/direccion/view.html');
+                app.mobileApp.navigate('#:back');
+                // app.mobileApp.navigate('components/direccion/view.html');
             });
 
             dataSource.sync();
@@ -204,9 +211,19 @@ app.users = kendo.observable({
     }
 
     parent.set('onShow', function (e) {
-        var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
-
-        fetchFilteredData(param);
+        // var param = e.view.params.filter ? JSON.parse(e.view.params.filter) : null;
+        // fetchFilteredData(param);
+        var param = $("#DisplayName").attr("type");
+        var searchVal = param,
+            searchFilter;
+        if (searchVal) {
+            searchFilter = {
+                field: 'users', // -> Id is ok , Seguimiento dont work
+                operator: 'eq',
+                value: param,
+            };
+        }
+        fetchFilteredData(usersModel.get('paramFilter'), searchFilter);
 
     });
 })(app.users);

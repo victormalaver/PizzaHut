@@ -108,6 +108,10 @@ app.home = kendo.observable({
                     $("#DisplayName").attr('type', app.user.Id);
                     console.log("app.user.Id: " + app.user.Id);
                 }
+
+                $("#homeModellogout").css("display", "block");
+                $("#homeModellogout").prev().css("border-width", "1px 0 0px");
+                // $("#DisplayName").attr('href', "components/users/view.html");
                 setTimeout(function () {
                     $("#appDrawer").removeAttr("style");
                     app.mobileApp.navigate('components/' + redirect + '/view.html');

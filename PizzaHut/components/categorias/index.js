@@ -23,6 +23,8 @@ function obtenerDireccion(tipo) {
                     "calle": direccionesGuardadas[i].calle,
                     "numero": direccionesGuardadas[i].numero,
                     "distrito": direccionesGuardadas[i].distrito,
+                    "provincia": direccionesGuardadas[i].provincia,
+                    "departamento": direccionesGuardadas[i].departamento,
                     "localizacion": direccionesGuardadas[i].localizacion
                 });
             }

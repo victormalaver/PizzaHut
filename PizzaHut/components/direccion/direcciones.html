@@ -14,6 +14,8 @@
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"></h3> #}else{#
             <h3>#:calle# #:numero#<input type="checkbox" data-role="switch" data-change="onChangeDireccion" data-idDireccion="#: data['id'] #"  data-checked="true"></h3> #}#
             <ul style="margin-top:-20px;">
+                <li>Departamento: #:departamento#
+                </li>
                 <li>Provincia: #:provincia#
                 </li>
                 <li>Distrito: #:distrito#
@@ -28,8 +30,8 @@
             </ul>
         </div>
     </script>
-    <ul id="actionsheetDeleteDireccion"  data-role="actionsheet" data-cancel="Close">
-        <li><a>.</a></li> 
+    <ul id="actionsheetDeleteDireccion" data-role="actionsheet" data-cancel="Close">
+        <li><a>.</a></li>
     </ul>
 </div>
 <div id="modalAlertDirecciones" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;text-align:left;" data-modal="false">
@@ -49,7 +51,7 @@
     #actionsheetDeleteDireccion .km-state-active {
         background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);
     }
-    #actionsheetDeleteDireccion .km-actionsheet-cancel { 
+    #actionsheetDeleteDireccion .km-actionsheet-cancel {
         display: none;
     }
     #listaDirecciones > li {

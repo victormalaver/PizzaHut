@@ -1,4 +1,4 @@
-<div data-role="view" data-title="Editar" data-model="app.users.editItemViewModel" data-bind="events: { show: onShow }" id="usersModelEditItemView">
+<div id="viewEditar" data-role="view" data-title="Editar" data-model="app.users.editItemViewModel" data-bind="events: { show: onShow }" id="usersModelEditItemView">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <span data-bind="text: currentItem.nombres" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
@@ -16,7 +16,7 @@
 
                     <label class="km-label-above">
 
-                        <span style="color:black;">Nombre Completo</span>
+                        <span style="color:black;">Nombres</span>
 
                         <input id="nombres" data-bind="value: editFormData.nombres" type="text">
                     </label>
@@ -48,7 +48,7 @@
 
                         <span style="color:black;">Teléfono</span>
 
-                        <input id="telefono" data-bind="value: editFormData.telefono" type="text">
+                        <input id="telefono" data-bind="value: editFormData.telefono" type="number" >
                     </label>
 
                 </li>
@@ -58,7 +58,7 @@
 
                         <span style="color:black;">Nro. DNI</span>
 
-                        <input id="dni" data-bind="value: editFormData.dni" type="text">
+                        <input id="dni" data-bind="value: editFormData.dni" type="number" >
                     </label>
 
                 </li>

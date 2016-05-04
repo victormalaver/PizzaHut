@@ -1,12 +1,11 @@
-<div id="direccionView" data-role="view" data-title="Registro" data-layout="main-nonav" data-model="app.direccion" data-bind="events: { show: onShow }">
+<div id="direccionView" data-role="view" data-title="Registro" data-layout="main-nonav" data-model="app.direccion" data-bind="events: { show: onShow }" data-after-show="app.direccion.afterShow">
     <header data-role="header">
-        <div data-role="navbar" class="header-text"  style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
+        <div data-role="navbar" class="header-text" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
             <a data-role="backbutton" data-align="left">Cancel</a>
             <!--             <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Save</a> -->
         </div>
     </header>
-    
     <!-- START_CUSTOM_CODE_usersModel -->
     <!-- END_CUSTOM_CODE_usersModel -->
     <div class="form-view">
@@ -15,18 +14,20 @@
             <ul class="form-content" data-role="listview" data-style="inset">
                 <li class="form-content-item">
                     <label class="km-label-above">
-
-                        <span style="color:black;">Provincia</span>
-
-                        <input id="provincia" type="text">
+                        <span style="color:black;">Departamento</span>
+                        <select id="departamentoAdd" onchange="cargarComboProvincias();"></select>
                     </label>
                 </li>
                 <li class="form-content-item">
                     <label class="km-label-above">
-
+                        <span style="color:black;">Provincia</span>
+                        <select id="provinciaAdd" onchange="cargarComboDistritos();"></select>
+                    </label>
+                </li>
+                <li class="form-content-item">
+                    <label class="km-label-above">
                         <span style="color:black;">Distrito</span>
-
-                        <input id="distrito" type="text">
+                        <select id="distritoAdd"></select>
                     </label>
                 </li>
                 <li class="form-content-item">
@@ -50,7 +51,7 @@
 
                         <span style="color:black;">Nro. Interior</span>
 
-                        <input id="interior" type="text">
+                        <input id="interior" type="number">
                     </label>
                 </li>
                 <li class="form-content-item">
@@ -77,7 +78,7 @@
     <a id="btn-next" data-role="button" class="nav-button" data-icon="details" data-bind="events: { click: onSaveClick }"></a>
 </div>
 <style>
-#direccionView{
-    background-color:#fff;
-}
+    #direccionView {
+        background-color: #fff;
+    }
 </style>

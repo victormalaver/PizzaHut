@@ -46,8 +46,7 @@ app.direccion = kendo.observable({
             return true;
         }
         if ($("#localizacion").val() == "") {
-            // alert("Ingrese localización");
-            // return true;
+            $("#localizacion").val("-12.110300550698781,-77.03691065311432");
         }
 
         if (localStorage.getItem("direccionesUsuario") != undefined) {

@@ -427,8 +427,7 @@ function agregarAlCarrito(categoria) {
                     }
 
                     localizacion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].localizacion;
-
-                    console.log("localizacion: " + localizacion);
+                    console.log(localizacion);
                     var latitude = localizacion.split(",")[0];
                     var longitude = localizacion.split(",")[1];
                     codigo = dataSourceOrden.total() + 1;
@@ -436,6 +435,7 @@ function agregarAlCarrito(categoria) {
                     user = $("#DisplayName").attr("type");
                     direccion = ordenesGuardadas[ordenesGuardadas.length - 1].Direccion;
                     precio = total.toFixed(2);
+					
                     dataSourceOrden.add({
                         Localizacion: {
                             longitude: parseFloat(longitude),

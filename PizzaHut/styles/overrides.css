@@ -540,6 +540,7 @@
 #direccionView > header > div {
     border-radius: 0;
 }
+#viewOferta > header > div,
 #viewProducto > header > div,
 #bienvenidaView > header > div,
 #viewCategoria > header > div,

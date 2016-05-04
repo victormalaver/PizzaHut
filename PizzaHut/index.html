@@ -119,10 +119,15 @@
             </br>
             <h3>Se agregó al carrito</h3>
             </br>
-            <div data-role="footer">
+            <!--             <div data-role="footer">
                 <div data-role="navbar">
                     <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();confirmarOrden()">Ver carrito</a>
                     <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();">Agregar más</a>
+                </div>
+            </div> -->
+            <div data-role="footer">
+                <div data-role="navbar" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();confirmarOrden()" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
+                    Ver Carrito
                 </div>
             </div>
         </div>
@@ -150,4 +155,3 @@
 </body>
 
 </html>
-

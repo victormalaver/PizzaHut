@@ -12,6 +12,7 @@
     /*      border-top-left-radius: 40px;
     border-top-right-radius: 40px; */
 }
+#modalAlertDirecciones>.km-content,
 #modalDemoCategorias>.km-content,
 #modalConfirmacionCarrito>.km-content,
 #modalConfirmacion>.km-content,

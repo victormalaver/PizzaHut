@@ -5,6 +5,8 @@ app.categorias = kendo.observable({
     afterShow: function () {
         obtenerDireccion("categoria");
         countCarrito();
+        // console.log($('#DisplayName').position().top);
+        // $("#modalConfirmarPedido").attr("height", $('#DisplayName').position().top +  "px");
     }
 });
 

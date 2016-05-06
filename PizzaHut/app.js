@@ -59,7 +59,7 @@
 function limpiarCache() {
     console.log("limpiarCache");
     localStorage.removeItem("ordenesCarrito");
-    localStorage.removeItem("direccionesUsuario");
+    localStorage.removeItem("direccionesUsuario"); 
 }
 
 function countCarrito() {
@@ -77,7 +77,6 @@ function countCarrito() {
 
 
 function confirmarOrden(categoria) {
-    console.log(categoria);
     if (categoria) {
         if (categoria !== 'undefined') {
             $('#modalPedido' + categoria).data('kendoMobileModalView').close();
@@ -104,6 +103,8 @@ function confirmarOrden(categoria) {
         }
         $("#precioOrden").text("S/. " + total.toFixed(2));
         $("#listViewConfirmar").html(html);
+        $("#DireccionModalConfirmarPedido").text( ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].calle +" - "+ ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].numero );
+        
 
         var mv = $("#modalConfirmarPedido").data("kendoMobileModalView");
         mv.shim.popup.options.animation.height = 4000;
@@ -114,6 +115,7 @@ function confirmarOrden(categoria) {
         mv.open();
 
     } else {
+        alert("No hay productos en el carrito");
         $('#modalConfirmarPedido').data('kendoMobileModalView').close();
         return;
     }

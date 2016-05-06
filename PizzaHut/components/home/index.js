@@ -94,19 +94,17 @@ app.home = kendo.observable({
                 console.log("app.user.DisplayName: " + app.user.DisplayName);
                 console.log("app.user.Id: " + app.user.Id);
                 console.log("app.user.principal_id: " + app.user.principal_id);
-                if (app.user.DisplayName) {
-                    $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + app.user.DisplayName);
-                } else {
-                    $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + "Mi Perfil");
-                }
+                // if (app.user.DisplayName) {
+                //     $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + app.user.DisplayName);
+                // } else {
+                //     $("#DisplayName").html('<span class="km-icon km-contacts"></span>' + "Mi Perfil");
+                // }
                 if (app.user.principal_id) {
                     $("#DisplayName").attr('href', "components/users/view.html?uid=" + app.user.principal_id);
                     $("#DisplayName").attr('type', app.user.principal_id);
-                    console.log("app.user.principal_id: " + app.user.principal_id);
                 } else {
                     $("#DisplayName").attr('href', "components/users/view.html?uid=" + app.user.Id);
                     $("#DisplayName").attr('type', app.user.Id);
-                    console.log("app.user.Id: " + app.user.Id);
                 }
 
                 $("#homeModellogout").css("display", "block");

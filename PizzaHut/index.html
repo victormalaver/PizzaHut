@@ -63,19 +63,19 @@
             </br>
             <h3><b id="nameDireccionModal"></b></h3>
             </br>
-            <!--             <div data-role="footer">
-                <div data-role="navbar"> 
-                    <a type="button" data-role="button" data-align="right" onclick="goToDirecciones();">Cambiar</a>
-                    <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoDireccion').data('kendoMobileModalView').close();">Ok</a>
-                </div>
-            </div> -->
             <div data-role="footer">
+                <div data-role="navbar">
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoDireccion').data('kendoMobileModalView').close();">Ok</a>
+                    <a type="button" data-role="button" data-align="right" onclick="goToDirecciones();">Agregar</a>
+                </div>
+            </div>
+            <!--             <div data-role="footer">
                 <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
                     Agregar Dirección
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div id="modalConfirmarPedido" data-role="modalview" data-model="app.productos" style="width: 80%;" data-modal="false">
+        <div id="modalConfirmarPedido" data-role="modalview" data-model="app.productos" style="width: 80%;height:518px;" data-modal="false">
             <div data-role="header">
                 <div data-role="navbar" style="background-color: transparent;">
                     <div style="text-align:center;">
@@ -99,6 +99,8 @@
                 <li><a>.</a></li>
             </ul>
             <div data-role="footer" style="background-color: transparent;">
+                <h6>Su pedido se enviará a:</h6>
+                <h3 id="DireccionModalConfirmarPedido"></h3>
                 <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
             </div>
         </div>
@@ -132,20 +134,19 @@
             </div>
         </div>
     </div>
-    <div id="appDrawer" data-role="drawer" data-title="&nbsp">
+    <div id="appDrawer" data-role="drawer" data-title="" data-swipe-to-open="false">
         <header data-role="header">
-            <div data-role="navbar" style="background-size: 100% 100%; background-image:url('components/productos/logo1.png');">
+            <div data-role="navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>
         <ul id="navigation-container" data-role="listview">
-            <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
-            <!--             <h6 style="margin: -12px 0 0 46px;color:#e12f33;">S/. 0.00</h6>
-            <h6 style="margin: 0 0 5px 46px;color:#e12f33;">Impuesto incluido</h6> -->
-            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Iniciar Sesi&#xF3;n</a></li>
+            <li style="text-align:center;"><img src="components/productos/logo1.png" style="width:75%;align-self: center;"></img><li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Mi Perfil</a></li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/ordenes/view.html" data-icon="globe">Seguimiento</a></li>
-            <!--             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a onclick="limpiarCache()" data-icon="globe">Limpiar caché</a></li> -->
+            <!--<li style="border-width: 1px 0 0;border-color: #e12f33;"><a onclick="limpiarCache()" data-icon="trash">Vaciar carrito</a></li> -->
             <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #e12f33;"><a onclick="cerrarSesion();" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
         </ul>
     </div>

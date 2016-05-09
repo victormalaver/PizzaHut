@@ -33,7 +33,7 @@ app.users = kendo.observable({
                 console.log(dataSource);
                 dataSource.fetch(function () {
                     console.log(dataSource.total());
-                    if( dataSource.total() == 0 ){
+                    if (dataSource.total() == 0) {
                         app.mobileApp.navigate('#components/users/add.html');
                     }
                 });
@@ -102,7 +102,8 @@ app.users = kendo.observable({
         usersModel = kendo.observable({
             dataSource: dataSource,
             itemClick: function (e) {
-                app.mobileApp.navigate('#components/users/edit.html?uid=' + e.dataItem.uid);
+
+                app.mobileApp.navigate('#components/users/edit.html?uid=' + $("#nombreUserModelTamplate>li").attr("data-uid"));
 
             },
             addClick: function () {

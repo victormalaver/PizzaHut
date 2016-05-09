@@ -59,7 +59,7 @@
 function limpiarCache() {
     console.log("limpiarCache");
     localStorage.removeItem("ordenesCarrito");
-    localStorage.removeItem("direccionesUsuario"); 
+    localStorage.removeItem("direccionesUsuario");
 }
 
 function countCarrito() {
@@ -75,13 +75,20 @@ function countCarrito() {
     }
 }
 
+function verMetodoDePago() {
+    var mv = $("#modalMetodoDePago").data("kendoMobileModalView");
+    mv.shim.popup.options.animation.open.effects = "zoom";
+    mv.open();
+}
 
 function confirmarOrden(categoria) {
+
+
     if (categoria) {
         if (categoria !== 'undefined') {
             $('#modalPedido' + categoria).data('kendoMobileModalView').close();
         }
-    } 
+    }
 
     // var mv = $("#modalVerDireccion").data("kendoMobileModalView");
     // mv.shim.popup.options.animation.open.effects = "zoom";
@@ -103,8 +110,7 @@ function confirmarOrden(categoria) {
         }
         $("#precioOrden").text("S/. " + total.toFixed(2));
         $("#listViewConfirmar").html(html);
-        $("#DireccionModalConfirmarPedido").text( ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].calle +" - "+ ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].numero );
-        
+        $("#DireccionModalConfirmarPedido").text(ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].calle + " - " + ordenesGuardadas[ordenesGuardadas.length - 1].Direccion[0].numero);
 
         var mv = $("#modalConfirmarPedido").data("kendoMobileModalView");
         mv.shim.popup.options.animation.height = 4000;
@@ -121,12 +127,12 @@ function confirmarOrden(categoria) {
     }
 }
 
-function cerrarSesion(){
+function cerrarSesion() {
     app.mobileApp.navigate("#components/home/view.html?logout=true");
     $("#DisplayName").attr('href', "components/index/view.html");
-    $("#homeModellogout").css("display","none");
-    $("#homeModellogout").prev().css("border-width","1px 0 1px");
-    $("#DisplayName").attr("type","");
+    $("#homeModellogout").css("display", "none");
+    $("#homeModellogout").prev().css("border-width", "1px 0 1px");
+    $("#DisplayName").attr("type", "");
     $('#DisplayName').html('<span class="km-icon km-contacts"></span>Iniciar Sesión');
 }
 // START_CUSTOM_CODE_kendoUiMobileApp

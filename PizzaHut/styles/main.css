@@ -1,5 +1,6 @@
 /*Start Css*/
 
+#modalMetodoDePago,
 #modalDemoCategorias,
 #modalConfirmacionCarrito,
 #modalConfirmacion,
@@ -12,19 +13,21 @@
     /*      border-top-left-radius: 40px;
     border-top-right-radius: 40px; */
 }
+#modalMetodoDePago>.km-content,
 #modalAlertDirecciones>.km-content,
 #modalDemoCategorias>.km-content,
 #modalConfirmacionCarrito>.km-content,
 #modalConfirmacion>.km-content,
-#modalInfoRegistro>.km-content, 
+#modalInfoRegistro>.km-content,
 #modalVerDireccion>.km-content,
 #modalInfoDireccion>.km-content {
     /*     background-image: linear-gradient(to bottom, #fcd86e 0%, #f19932 100%); */
-    background: linear-gradient(#f19932, #fcd86e);
+    background: linear-gradient(#fcd86e, #f19932);
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 }
-#btn-next {
+#btn-next,
+#btn-guardar {
     background-color: #f19932;
     color: black;
     border-color: #f19932;
@@ -58,7 +61,7 @@
     display: table-cell;
     padding: 0.5em;
     /* .6em .8em;*/
-    margin: 5% 20%/*1em 0;*/
+    margin: 5% 10%/*1em 0;*/
 }
 #kendoUiMobileApp .button-group.button-group-vertical .km-button {
     display: block;

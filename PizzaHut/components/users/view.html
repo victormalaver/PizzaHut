@@ -5,23 +5,20 @@
             <a data-align="right" data-role="button" class="nav-button" data-icon="cart" onclick="confirmarOrden()"><span class="km-badge" style="margin: 16px 27px 0 0;">0</span></a>
         </div>
     </header>
-    <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="usersModelTemplate" data-bind="{ source: usersModel.dataSource, events: {click: usersModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
+    <ul id="nombreUserModelTamplate" data-role="listview" data-auto-bind="false" data-style="inset" data-template="usersModelTemplate" data-bind="{ source: usersModel.dataSource}" data-pull-to-refresh="false" data-endless-scroll="false">
     </ul>
     <!-- START_CUSTOM_CODE_usersModel -->
     <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
     <!-- END_CUSTOM_CODE_usersModel -->
     <script type="text/x-kendo-template" id="usersModelTemplate">
-        <div style="text-align:center;margin-top:25%;">
-            <img src="components/users/Barbacoa.png" width="50%">
+        <div style="text-align:center;margin-top:65%;">
             <h1 style="color:tomato;">Bienvenido</h1>
             </br>
-            <h3>#: data['nombres'] #</h3> 
-            <div class="button-group button-group-vertical">
-                <a data-role="button" class="primary">Editar mi perfil</a>
-            </div>
-        </div>
+            <h3>#: data['nombres'] #</h3>
+          </div>
     </script>
-    <div class="button-group button-group-vertical" style="text-align:center;margin-top:-13%;font-size: 1.2em;">
+    <div class="button-group button-group-vertical">
+        <a data-role="button" class="primary" data-bind="{events: {click: usersModel.itemClick} }">Mi Perfil</a>
         <a data-role="button" class="primary" data-bind="{ events: {click: usersModel.goToDirecciones} }">Mis direcciones</a>
-    </div>
+    </div> 
 </div>

@@ -63,7 +63,7 @@
             </br>
             <h3><b id="nameDireccionModal"></b></h3>
             </br>
-            <div data-role="footer">
+            <div data-role="footer" style="z-index: -1">
                 <div data-role="navbar">
                     <a type="button" data-role="button" data-align="right" onclick="$('#modalInfoDireccion').data('kendoMobileModalView').close();">Ok</a>
                     <a type="button" data-role="button" data-align="right" onclick="goToDirecciones();">Agregar</a>
@@ -75,7 +75,7 @@
                 </div>
             </div> -->
         </div>
-        <div id="modalConfirmarPedido" data-role="modalview" data-model="app.productos" style="width: 80%;height:518px;" data-modal="false">
+        <div id="modalConfirmarPedido" data-role="modalview" data-model="app.productos" style="width: 80%;height:450px;" data-modal="false">
             <div data-role="header">
                 <div data-role="navbar" style="background-color: transparent;">
                     <div style="text-align:center;">
@@ -90,9 +90,6 @@
             </br>
             <ul id="listViewConfirmar" data-role="listview" style="text-align: left;">
             </ul>
-            <!--             <div class="button-group button-group-vertical">
-                <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;">Comprar</a>
-            </div> -->
             </br>
             </br>
             <ul id="actionsheetDelete" data-role="actionsheet" data-cancel="Close">
@@ -100,8 +97,10 @@
             </ul>
             <div data-role="footer" style="background-color: transparent;">
                 <h6>Su pedido se enviará a:</h6>
-                <h3 id="DireccionModalConfirmarPedido"></h3>
-                <a id="btnSendBS" data-role="button" class="primary" data-bind="events: { click: productosModel.sendBSorden }" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
+                <label id="DireccionModalConfirmarPedido" style="color:#fff;"></label>
+                <span class="km-icon km-compose" style="display: inline-block;margin-left: 10px;color:#fff;" onclick="goToDirecciones();"></span>
+                </br>
+                <a id="btnSendBS" data-role="button" class="primary"  onclick="$('#modalMetodoDePago').data('kendoMobileModalView').open();" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
             </div>
         </div>
         <div id="modalConfirmacion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
@@ -121,15 +120,27 @@
             </br>
             <h3>Se agregó al carrito</h3>
             </br>
-            <!--             <div data-role="footer">
-                <div data-role="navbar">
-                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();confirmarOrden()">Ver carrito</a>
-                    <a type="button" data-role="button" data-align="right" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();">Agregar más</a>
-                </div>
-            </div> -->
             <div data-role="footer">
                 <div data-role="navbar" onclick="$('#modalConfirmacionCarrito').data('kendoMobileModalView').close();confirmarOrden()" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
                     Ver Carrito
+                </div>
+            </div>
+        </div>
+        <div id="modalMetodoDePago" data-role="modalview"  data-model="app.productos"  style="width: 80%;border-radius: 40px;z-index:-1;">
+            </br>
+            </br>
+            <h3>Métodos de pago:</h3>
+            </br>
+            <div style="text-align:left;margin:0 0 10% 10%;">
+                <input type="radio" value="Red" name="color" checked="checked"><label>&nbsp&nbsp Efectivo</label>
+                </br>
+                </br>
+                <input type="radio" value="Green" name="color"><label>&nbsp&nbsp Tarjeta</label>
+            </div>
+            <div data-role="footer" style="z-index: -1">
+                <div data-role="navbar">
+                    <a type="button" data-role="button" data-align="right" data-bind="events: { click: productosModel.sendBSorden }">Confirmar</a>
+                    <a type="button" data-role="button" data-align="right" onclick="$('#modalMetodoDePago').data('kendoMobileModalView').close();">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -141,18 +152,16 @@
             </div>
         </header>
         <ul id="navigation-container" data-role="listview">
-            <li style="text-align:center;"><img src="components/productos/logo1.png" style="width:75%;align-self: center;"></img><li>
+            <li style="text-align:center;"><img src="components/productos/logo1.png" style="width:75%;align-self: center;"></img>
+            </li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Mi Perfil</a></li>
-            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/categorias/view.html" data-icon="organize">Categorias</a></li>
-            <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge">0</span>Carrito</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/categorias/view.html" data-icon="bookmarks">Categorias</a></li>
+            <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge" style="z-index: 0;">0</span>Carrito</a></li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/ordenes/view.html" data-icon="globe">Seguimiento</a></li>
             <!--<li style="border-width: 1px 0 0;border-color: #e12f33;"><a onclick="limpiarCache()" data-icon="trash">Vaciar carrito</a></li> -->
             <li id="homeModellogout" style="border-width: 1px 0 1px;border-color: #e12f33;"><a onclick="cerrarSesion();" data-position="end" data-icon="action">Cerrar Sesi&#xF3;n</a></li>
         </ul>
     </div>
-    <!-- START_CUSTOM_CODE_kendoUiMobileApp -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
-    <!-- END_CUSTOM_CODE_kendoUiMobileApp -->
 </body>
 
 </html>

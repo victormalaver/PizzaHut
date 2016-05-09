@@ -11,7 +11,7 @@ app.index = kendo.observable({
          var mv = $("#modalInfoRegistro").data("kendoMobileModalView");
         mv.shim.popup.options.animation.open.effects = "zoom";
         mv.open();
-
+        
         // if (e.view.params.logout) {
         //     $("#appDrawer").attr("style","width:0rem;") 
         //     app.home.homeModel.cerrarSesion();

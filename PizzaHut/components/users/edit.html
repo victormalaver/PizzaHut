@@ -3,7 +3,6 @@
         <div data-role="navbar" class="header-text">
             <span data-bind="text: currentItem.nombres" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;" data-role="view-title"></span>
             <a data-role="backbutton" data-align="left">Cancel</a>
-            <a data-role="button" data-align="right" data-bind="events: { click: onSaveClick }">Guardar</a>
         </div>
     </header>
     <!-- START_CUSTOM_CODE_usersModel -->
@@ -67,4 +66,5 @@
         <!-- START_CUSTOM_CODE_editableListForm66 -->
         <!-- END_CUSTOM_CODE_editableListForm66 -->
     </div>
+     <a id="btn-guardar" data-role="button" class="nav-button" data-icon="details" data-bind="events: { click: onSaveClick }"></a>
 </div>

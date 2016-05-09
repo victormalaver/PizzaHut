@@ -110,7 +110,7 @@ function muestraReloj(fechaMod) {
                         var seguimientoLatLong = [parseFloat(ubicSeguimientos.substring(0, ubicSeguimientos.indexOf(","))), parseFloat(ubicSeguimientos.substring(ubicSeguimientos.indexOf(",") + 1, ubicSeguimientos.length))];
                         markerClientes.addLayer(new L.Marker(seguimientoLatLong, {
                             icon: iconSeguimiento
-                        }).bindPopup("<big>Orden: " + dataSource.at(i).Codigo + "</big></br><b><em>" + pedido + "</em></b></br></br>Total: S/. " + dataSource.at(i).Precio + "</br>" + dataSource.at(i).Estado + "</br>Dirección: " + dataSource.at(i).Direccion[0].calle + dataSource.at(i).Direccion[0].numero + " - " + dataSource.at(i).Direccion[0].distrito));
+                        }).bindPopup("<big>Orden: " + dataSource.at(i).Codigo + "</big></br><b><em>" + pedido + "</em></b></br></br>Total: S/. " + dataSource.at(i).Precio + "</br>" + dataSource.at(i).Estado + "</br>Dirección: " + dataSource.at(i).Direccion[0].calle +" "+ dataSource.at(i).Direccion[0].numero + " - " + dataSource.at(i).Direccion[0].distrito));
                         muestraReloj(dataSource.at(0).ModifiedAt);
                         map.panTo(new L.LatLng(parseFloat(ubicSeguimientos.substring(0, ubicSeguimientos.indexOf(","))), parseFloat(ubicSeguimientos.substring(ubicSeguimientos.indexOf(",") + 1, ubicSeguimientos.length))));
                         // map.setView(new L.LatLng(40.737, -73.923), 8);

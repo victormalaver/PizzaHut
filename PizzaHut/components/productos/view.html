@@ -11,7 +11,7 @@
     <!--     <ul data-role="listview" data-auto-bind="false" data-style="inset" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }" data-pull-to-refresh="false" data-endless-scroll="false">
     </ul> -->
     <!--     <div data-auto-bind="false"  data-role="scrollview" data-page="3" data-content-height="100%" data-pager-overlay="true" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource, events: {click: productosModel.itemClick} }"></div> -->
-    <div id="scrollViewProducto" data-role="scrollview" data-auto-bind="false" data-content-height="100%" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource }" data-pager-overlay="true" style="text-align:center;margin-top:50%;">
+    <div id="scrollViewProducto" data-role="scrollview" data-auto-bind="false" data-content-height="100%" data-template="productosModelTemplate" data-bind="{ source: productosModel.dataSource }" data-pager-overlay="true" style="text-align:center;margin-top:55%;">
     </div>
     <a id="prev-img" title="Previous Image"></a>
     <a id="next-img" title="Next Image"></a>
@@ -27,7 +27,7 @@
         <p class="editableListItem"><span>Precio</span><span>#: data['Precio'] #</span></p>
     </script> -->
     <script type="text/x-kendo-template" id="productosModelTemplate">
-        <li class="photo" data-role="page" style="width: 300px; height: 300px; background-image: url('#: data['PictureUrl'] #');" data-bind="{events: {click: productosModel.itemClickPizza}"></li>
+        <li class="photo" data-role="page" style="width: 250px; height: 250px; background-image: url('#: data['PictureUrl'] #');" data-bind="{events: {click: productosModel.itemClickPizza}"></li>
         <h2>#: data['Nombre'] #</h2>
     </script>
     <script>
@@ -118,6 +118,4 @@
         <a data-role="button" class="primary" onclick="agregarAlCarrito('Pizza');" style="background-color: #F09831;padding: 10px;">Agregar al carrito</a>
         <a data-role="button" class="primary" onclick="confirmarOrden('Pizza');" id="btnVerCarrito" style="background-color: #F09831;padding: 10px;">Ver el carrito</a>
     </div>
-    </br>
-    </br>
 </div>

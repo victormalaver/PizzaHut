@@ -390,6 +390,7 @@ function agregarAlCarrito(categoria) {
             },
             sendBSorden: function (e) {
                 kendo.mobile.application.showLoading();
+                $('#modalMetodoDePago').data('kendoMobileModalView').close(); 
                 var dataSourceOrden = new kendo.data.DataSource({
                     type: 'everlive',
                     transport: {

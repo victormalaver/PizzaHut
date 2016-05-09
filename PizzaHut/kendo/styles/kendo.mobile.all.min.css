@@ -127,40 +127,45 @@
 #direccionView,
 #listadoView {
     background-color: transparent;
-    background-image: url('images/fondoBlanco.png');
-    background-size: auto 100%;
-    background-repeat: repeat;
-    color: white;
+    background: url('images/fondoBlanco.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-#viewCategoria,
-#bienvenidaView {
+#viewCategoria {
     background-color: transparent;
-    background-image: url('images/fondo.png');
-    background-size: auto 100%;
-    background-repeat: repeat;
-    color: white;
+    background: url('images/fondo.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+#bienvenidaView,
 #viewIndex,
 #homeView {
     background-color: transparent;
-    background-image: url('images/fondo1.png');
-    background-size: auto 100%;
-    background-repeat: repeat;
-    color: white;
+    background: url('images/fondo1.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 #viewProducto {
     background-color: transparent;
-    background-image: url('images/fondo2.png');
-    background-size: auto 100%;
-    background-repeat: repeat;
-    color: white;
+    background: url('images/fondo2.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 #viewOferta {
     background-color: transparent;
-    background-image: url('images/fondo3.png');
-    background-size: auto 100%;
-    background-repeat: repeat;
-    color: white;
+    background: url('images/fondo3.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .k-ff .km-view,
 .k-ff .km-pane {
@@ -2688,7 +2693,7 @@ body:before {
     content: "\e213"
 }
 .km-ios7 .km-share:after {
-    content: "\e214"
+    content: "\e214g"
 }
 .km-ios7 .km-more:after {
     content: "\e215"
@@ -14596,8 +14601,10 @@ html .km-material .k-overflow-container.km-actionsheet>li {
 .km-nova input[type=checkbox] {
     border-width: 2px;
     border-style: solid;
-    height: 1.882rem;
-    width: 1.882rem;
+    /*     height: 1.882rem; */
+    /*     width: 1.882rem; */
+    height: 1rem;
+    width: 1rem;
     border-radius: 3px;
     opacity: 1;
     margin: 0;
@@ -14608,8 +14615,10 @@ html .km-material .k-overflow-container.km-actionsheet>li {
     right: 0
 }
 .km-nova input[type=radio] {
-    height: 1.882rem;
-    width: 1.882rem;
+    /*     height: 1.882rem;
+    width: 1.882rem; */
+    height: 1rem;
+    width: 1rem;
     border-radius: 50%
 }
 .km-nova input[type=radio].km-check:checked:after,
@@ -15662,7 +15671,8 @@ html .km-material .k-overflow-container.km-actionsheet>li {
     border-radius: 0;
     margin: 0;
     padding: .88em 0;
-    line-height: 1.5em;
+    /*     line-height: 1.5em; */
+    line-height: 1em;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

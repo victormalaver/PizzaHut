@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+
     var app = {
         data: {}
     };
@@ -44,9 +45,7 @@
         $('#navigation-container li.active').removeClass('active');
         currentItem.addClass('active');
     };
-
     window.app = app;
-
     app.isOnline = function () {
         if (!navigator || !navigator.connection) {
             return true;
@@ -55,6 +54,15 @@
         }
     };
 }());
+
+function setPositionImgNav() {
+    if ($("#imgNav").css("margin-left") == "0px") {
+        $("#imgNav").css({
+            "margin-top": parseInt($("#DisplayName").offset().top / -2) - 14,
+            "margin-left": "30px"
+        });
+    }
+}
 
 function limpiarCache() {
     console.log("limpiarCache");

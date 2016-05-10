@@ -1,19 +1,19 @@
-<div id="homeView" data-role="view" data-title="Iniciar Sesión" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow">
+<div id="homeView" data-role="view" data-title="Iniciar Sesión" data-layout="main" data-model="app.home" data-show="app.home.onShow" data-after-show="app.home.afterShow" data-use-native-scrolling="true">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left" href="components/index/view.html">Back</a>
             <span style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;">&nbsp;</span>
         </div>
-    </header>
-    <div class="signin-view">
-        <form style="margin-top:70%;">
-            <ul data-role="listview" data-style="inset">
+    </header> 
+    <div class="signin-view"> 
+        <form style="padding-top:70%;">
+            <ul data-role="listview" data-style="inset" data-use-native="true"> 
                 <li class="form-content-item">
                     <label class="km-label-above">
 
                         <span>Correo</span>
 
-                        <input type="email" data-bind="value: homeModel.email" required>
+                        <input type="email" class="xxx" data-bind="value: homeModel.email" required>
                     </label>
                 </li>
                 <li class="form-content-item">

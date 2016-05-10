@@ -2,7 +2,7 @@
   "ProjectName": "PizzaHut",
   "ProjectGuid": "1afe8b70-c2a4-44b5-ab68-8e38e39de6a6",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.PizzaHut",
+  "AppIdentifier": "PizzaHut",
   "DisplayName": "PizzaHut",
   "Author": "",
   "Description": "PizzaHut",

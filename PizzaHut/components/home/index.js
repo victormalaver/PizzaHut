@@ -186,6 +186,9 @@ app.home = kendo.observable({
     });
 })(app.home);
 
+
+
+
 // START_CUSTOM_CODE_homeModel
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 

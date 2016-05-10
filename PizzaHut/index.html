@@ -48,7 +48,7 @@
             </br>
             <h3 style="text-align:center;">Registre su dirección: </h3>
             </br>
-            <h3><b>Debe ingresar almenos una dirección para el envío de su pedido</b></h3>
+            <h3><b>Debe ingresar al menos una dirección para el envío de su pedido</b></h3>
             </br>
             <div data-role="footer">
                 <div data-role="navbar" onclick="goToDirecciones();" style="background-image: linear-gradient(to bottom, #e12f33 0%, #e12f33 100%);">
@@ -100,7 +100,7 @@
                 <label id="DireccionModalConfirmarPedido" style="color:#fff;"></label>
                 <span class="km-icon km-compose" style="display: inline-block;margin-left: 10px;color:#fff;" onclick="goToDirecciones();"></span>
                 </br>
-                <a id="btnSendBS" data-role="button" class="primary"  onclick="$('#modalMetodoDePago').data('kendoMobileModalView').open();" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
+                <a id="btnSendBS" data-role="button" class="primary" onclick="$('#modalMetodoDePago').data('kendoMobileModalView').open();" style="background-color: #F09831;padding: 10px;margin: 5% 0; width:50%;">Comprar</a>
             </div>
         </div>
         <div id="modalConfirmacion" data-role="modalview" style="width: 80%;border-radius: 40px;z-index:-1;" data-modal="false">
@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div id="modalMetodoDePago" data-role="modalview"  data-model="app.productos"  style="width: 80%;border-radius: 40px;z-index:-1;">
+        <div id="modalMetodoDePago" data-role="modalview" data-model="app.productos" style="width: 80%;border-radius: 40px;z-index:-1;">
             </br>
             </br>
             <h3>Métodos de pago:</h3>
@@ -145,15 +145,14 @@
             </div>
         </div>
     </div>
-    <div id="appDrawer" data-role="drawer" data-title="" data-swipe-to-open="false">
+    <div id="appDrawer" data-role="drawer" data-title="" data-swipe-to-open="false" data-before-show="setPositionImgNav">
         <header data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
             </div>
         </header>
+        <img id="imgNav" src="components/productos/logo1.png" style="position:absolute;width:75%;align-self: center;"></img>
         <ul id="navigation-container" data-role="listview">
-            <li style="text-align:center;"><img src="components/productos/logo1.png" style="width:75%;align-self: center;"></img>
-            </li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/users/edit.html?uid=" data-icon="contacts" id="DisplayName" type="">Mi Perfil</a></li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;"><a href="components/categorias/view.html" data-icon="bookmarks">Categorias</a></li>
             <li style="border-width: 1px 0 0;border-color: #e12f33;" onclick="confirmarOrden()"><a data-icon="cart"><span class="km-badge" style="z-index: 0;">0</span>Carrito</a></li>
